@@ -24,6 +24,11 @@ dependencies:
   retrofit:
   flutter_bloc: ^7.3.3
   provider: ^6.0.2
+  iconsax:
+  qr_code_scanner: ^0.7.0
+
+  flutter_phone_direct_caller:
+  image_picker:
 
 dev_dependencies:
   flutter_test:

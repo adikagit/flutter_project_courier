@@ -24,6 +24,8 @@ Zakaz _$ZakazFromJson(Map<String, dynamic> json) => Zakaz()
   ..id = json['id'] as int?
   ..addressPickup = json['addressPickup'] as String?
   ..addressDelivery = json['addressDelivery'] as String?
+  ..clientFullName = json['clientFullName'] as String?
+  ..clientPhoneNumber = json['clientPhoneNumber'] as String?
   ..typeDelivery = json['typeDelivery'] as String?
   ..status = json['status'] as String?;
 
@@ -31,6 +33,8 @@ Map<String, dynamic> _$ZakazToJson(Zakaz instance) => <String, dynamic>{
       'id': instance.id,
       'addressPickup': instance.addressPickup,
       'addressDelivery': instance.addressDelivery,
+      'clientFullName': instance.clientFullName,
+      'clientPhoneNumber': instance.clientPhoneNumber,
       'typeDelivery': instance.typeDelivery,
       'status': instance.status,
     };

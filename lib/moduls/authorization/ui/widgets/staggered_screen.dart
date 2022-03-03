@@ -1,4 +1,4 @@
-import 'package:dostavka/registration/widgets/blank_screen.dart';
+import 'package:dostavka/moduls/authorization/ui/widgets/blank_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

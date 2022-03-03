@@ -25,6 +25,22 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       } catch (err) {
         yield ProfileState.error(err);
       }
+    },fetchSummaryEditProfile: (userFullName,userPhoneNumber,email,status) async* {
+      try {
+        yield ProfileState.loadingEditProfile();
+        var editProfileSummary = await provider.getEditProfile(userFullName,userPhoneNumber,email,status);
+        yield ProfileState.contentEditProfile(editProfileSummary);
+      } catch (err) {
+        yield ProfileState.errorEditProfile(err);
+      }
+    },fetchSummaryEditPassword: (password,status) async* {
+      try {
+        yield ProfileState.loadingEditPassword();
+        var editPasswordSummary = await provider.getEditPassword(password,status);
+        yield ProfileState.contentEditPassword(editPasswordSummary);
+      } catch (err) {
+        yield ProfileState.errorEditPassword(err);
+      }
     }
     );
   }

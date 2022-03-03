@@ -30,9 +30,24 @@ class _$OrderEventTearOff {
     );
   }
 
-  _OrderSummaryComplete fetchSummaryComplete(int id) {
+  _OrderSummaryDetail fetchSummaryDetail(int id, String status) {
+    return _OrderSummaryDetail(
+      id,
+      status,
+    );
+  }
+
+  _OrderSummaryQrcode fetchSummaryQrcode(int order_id, int user_id) {
+    return _OrderSummaryQrcode(
+      order_id,
+      user_id,
+    );
+  }
+
+  _OrderSummaryComplete fetchSummaryComplete(int id, String status) {
     return _OrderSummaryComplete(
       id,
+      status,
     );
   }
 
@@ -50,7 +65,9 @@ mixin _$OrderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String status) fetchSummary,
     required TResult Function(int id) fetchSummaryAccept,
-    required TResult Function(int id) fetchSummaryComplete,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) =>
       throw _privateConstructorUsedError;
@@ -58,7 +75,9 @@ mixin _$OrderEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,7 +85,9 @@ mixin _$OrderEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
   }) =>
@@ -75,6 +96,8 @@ mixin _$OrderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_OrderSummaryEvent value) fetchSummary,
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) =>
@@ -83,6 +106,8 @@ mixin _$OrderEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) =>
@@ -91,6 +116,8 @@ mixin _$OrderEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -181,7 +208,9 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String status) fetchSummary,
     required TResult Function(int id) fetchSummaryAccept,
-    required TResult Function(int id) fetchSummaryComplete,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
     return fetchSummary(status);
@@ -192,7 +221,9 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
     return fetchSummary?.call(status);
@@ -203,7 +234,9 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
   }) {
@@ -218,6 +251,8 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_OrderSummaryEvent value) fetchSummary,
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -229,6 +264,8 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -240,6 +277,8 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -327,7 +366,9 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
   TResult when<TResult extends Object?>({
     required TResult Function(String status) fetchSummary,
     required TResult Function(int id) fetchSummaryAccept,
-    required TResult Function(int id) fetchSummaryComplete,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
     return fetchSummaryAccept(id);
@@ -338,7 +379,9 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
     return fetchSummaryAccept?.call(id);
@@ -349,7 +392,9 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
   }) {
@@ -364,6 +409,8 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
   TResult map<TResult extends Object?>({
     required TResult Function(_OrderSummaryEvent value) fetchSummary,
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -375,6 +422,8 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -386,6 +435,8 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -407,11 +458,351 @@ abstract class _OrderSummaryAccept implements OrderEvent {
 }
 
 /// @nodoc
+abstract class _$OrderSummaryDetailCopyWith<$Res> {
+  factory _$OrderSummaryDetailCopyWith(
+          _OrderSummaryDetail value, $Res Function(_OrderSummaryDetail) then) =
+      __$OrderSummaryDetailCopyWithImpl<$Res>;
+  $Res call({int id, String status});
+}
+
+/// @nodoc
+class __$OrderSummaryDetailCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res>
+    implements _$OrderSummaryDetailCopyWith<$Res> {
+  __$OrderSummaryDetailCopyWithImpl(
+      _OrderSummaryDetail _value, $Res Function(_OrderSummaryDetail) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryDetail));
+
+  @override
+  _OrderSummaryDetail get _value => super._value as _OrderSummaryDetail;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_OrderSummaryDetail(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryDetail implements _OrderSummaryDetail {
+  const _$_OrderSummaryDetail(this.id, this.status);
+
+  @override
+  final int id;
+  @override
+  final String status;
+
+  @override
+  String toString() {
+    return 'OrderEvent.fetchSummaryDetail(id: $id, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryDetail &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.status, status));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(status));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryDetailCopyWith<_OrderSummaryDetail> get copyWith =>
+      __$OrderSummaryDetailCopyWithImpl<_OrderSummaryDetail>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String status) fetchSummary,
+    required TResult Function(int id) fetchSummaryAccept,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
+    required TResult Function() fetchSummaryHistory,
+  }) {
+    return fetchSummaryDetail(id, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String status)? fetchSummary,
+    TResult Function(int id)? fetchSummaryAccept,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
+    TResult Function()? fetchSummaryHistory,
+  }) {
+    return fetchSummaryDetail?.call(id, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String status)? fetchSummary,
+    TResult Function(int id)? fetchSummaryAccept,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
+    TResult Function()? fetchSummaryHistory,
+    required TResult orElse(),
+  }) {
+    if (fetchSummaryDetail != null) {
+      return fetchSummaryDetail(id, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderSummaryEvent value) fetchSummary,
+    required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
+    required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
+  }) {
+    return fetchSummaryDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OrderSummaryEvent value)? fetchSummary,
+    TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
+    TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
+  }) {
+    return fetchSummaryDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderSummaryEvent value)? fetchSummary,
+    TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
+    TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
+    required TResult orElse(),
+  }) {
+    if (fetchSummaryDetail != null) {
+      return fetchSummaryDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryDetail implements OrderEvent {
+  const factory _OrderSummaryDetail(int id, String status) =
+      _$_OrderSummaryDetail;
+
+  int get id;
+  String get status;
+  @JsonKey(ignore: true)
+  _$OrderSummaryDetailCopyWith<_OrderSummaryDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryQrcodeCopyWith<$Res> {
+  factory _$OrderSummaryQrcodeCopyWith(
+          _OrderSummaryQrcode value, $Res Function(_OrderSummaryQrcode) then) =
+      __$OrderSummaryQrcodeCopyWithImpl<$Res>;
+  $Res call({int order_id, int user_id});
+}
+
+/// @nodoc
+class __$OrderSummaryQrcodeCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res>
+    implements _$OrderSummaryQrcodeCopyWith<$Res> {
+  __$OrderSummaryQrcodeCopyWithImpl(
+      _OrderSummaryQrcode _value, $Res Function(_OrderSummaryQrcode) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryQrcode));
+
+  @override
+  _OrderSummaryQrcode get _value => super._value as _OrderSummaryQrcode;
+
+  @override
+  $Res call({
+    Object? order_id = freezed,
+    Object? user_id = freezed,
+  }) {
+    return _then(_OrderSummaryQrcode(
+      order_id == freezed
+          ? _value.order_id
+          : order_id // ignore: cast_nullable_to_non_nullable
+              as int,
+      user_id == freezed
+          ? _value.user_id
+          : user_id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
+  const _$_OrderSummaryQrcode(this.order_id, this.user_id);
+
+  @override
+  final int order_id;
+  @override
+  final int user_id;
+
+  @override
+  String toString() {
+    return 'OrderEvent.fetchSummaryQrcode(order_id: $order_id, user_id: $user_id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryQrcode &&
+            const DeepCollectionEquality().equals(other.order_id, order_id) &&
+            const DeepCollectionEquality().equals(other.user_id, user_id));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(order_id),
+      const DeepCollectionEquality().hash(user_id));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryQrcodeCopyWith<_OrderSummaryQrcode> get copyWith =>
+      __$OrderSummaryQrcodeCopyWithImpl<_OrderSummaryQrcode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String status) fetchSummary,
+    required TResult Function(int id) fetchSummaryAccept,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
+    required TResult Function() fetchSummaryHistory,
+  }) {
+    return fetchSummaryQrcode(order_id, user_id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String status)? fetchSummary,
+    TResult Function(int id)? fetchSummaryAccept,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
+    TResult Function()? fetchSummaryHistory,
+  }) {
+    return fetchSummaryQrcode?.call(order_id, user_id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String status)? fetchSummary,
+    TResult Function(int id)? fetchSummaryAccept,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
+    TResult Function()? fetchSummaryHistory,
+    required TResult orElse(),
+  }) {
+    if (fetchSummaryQrcode != null) {
+      return fetchSummaryQrcode(order_id, user_id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderSummaryEvent value) fetchSummary,
+    required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
+    required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
+  }) {
+    return fetchSummaryQrcode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OrderSummaryEvent value)? fetchSummary,
+    TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
+    TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
+  }) {
+    return fetchSummaryQrcode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderSummaryEvent value)? fetchSummary,
+    TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
+    TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
+    required TResult orElse(),
+  }) {
+    if (fetchSummaryQrcode != null) {
+      return fetchSummaryQrcode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryQrcode implements OrderEvent {
+  const factory _OrderSummaryQrcode(int order_id, int user_id) =
+      _$_OrderSummaryQrcode;
+
+  int get order_id;
+  int get user_id;
+  @JsonKey(ignore: true)
+  _$OrderSummaryQrcodeCopyWith<_OrderSummaryQrcode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$OrderSummaryCompleteCopyWith<$Res> {
   factory _$OrderSummaryCompleteCopyWith(_OrderSummaryComplete value,
           $Res Function(_OrderSummaryComplete) then) =
       __$OrderSummaryCompleteCopyWithImpl<$Res>;
-  $Res call({int id});
+  $Res call({int id, String status});
 }
 
 /// @nodoc
@@ -428,12 +819,17 @@ class __$OrderSummaryCompleteCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? status = freezed,
   }) {
     return _then(_OrderSummaryComplete(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -441,14 +837,16 @@ class __$OrderSummaryCompleteCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OrderSummaryComplete implements _OrderSummaryComplete {
-  const _$_OrderSummaryComplete(this.id);
+  const _$_OrderSummaryComplete(this.id, this.status);
 
   @override
   final int id;
+  @override
+  final String status;
 
   @override
   String toString() {
-    return 'OrderEvent.fetchSummaryComplete(id: $id)';
+    return 'OrderEvent.fetchSummaryComplete(id: $id, status: $status)';
   }
 
   @override
@@ -456,12 +854,15 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _OrderSummaryComplete &&
-            const DeepCollectionEquality().equals(other.id, id));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.status, status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(status));
 
   @JsonKey(ignore: true)
   @override
@@ -474,10 +875,12 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
   TResult when<TResult extends Object?>({
     required TResult Function(String status) fetchSummary,
     required TResult Function(int id) fetchSummaryAccept,
-    required TResult Function(int id) fetchSummaryComplete,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
-    return fetchSummaryComplete(id);
+    return fetchSummaryComplete(id, status);
   }
 
   @override
@@ -485,10 +888,12 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
-    return fetchSummaryComplete?.call(id);
+    return fetchSummaryComplete?.call(id, status);
   }
 
   @override
@@ -496,12 +901,14 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
   }) {
     if (fetchSummaryComplete != null) {
-      return fetchSummaryComplete(id);
+      return fetchSummaryComplete(id, status);
     }
     return orElse();
   }
@@ -511,6 +918,8 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
   TResult map<TResult extends Object?>({
     required TResult Function(_OrderSummaryEvent value) fetchSummary,
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -522,6 +931,8 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -533,6 +944,8 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -545,9 +958,11 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
 }
 
 abstract class _OrderSummaryComplete implements OrderEvent {
-  const factory _OrderSummaryComplete(int id) = _$_OrderSummaryComplete;
+  const factory _OrderSummaryComplete(int id, String status) =
+      _$_OrderSummaryComplete;
 
   int get id;
+  String get status;
   @JsonKey(ignore: true)
   _$OrderSummaryCompleteCopyWith<_OrderSummaryComplete> get copyWith =>
       throw _privateConstructorUsedError;
@@ -596,7 +1011,9 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
   TResult when<TResult extends Object?>({
     required TResult Function(String status) fetchSummary,
     required TResult Function(int id) fetchSummaryAccept,
-    required TResult Function(int id) fetchSummaryComplete,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
     return fetchSummaryHistory();
@@ -607,7 +1024,9 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
     return fetchSummaryHistory?.call();
@@ -618,7 +1037,9 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String status)? fetchSummary,
     TResult Function(int id)? fetchSummaryAccept,
-    TResult Function(int id)? fetchSummaryComplete,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
   }) {
@@ -633,6 +1054,8 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
   TResult map<TResult extends Object?>({
     required TResult Function(_OrderSummaryEvent value) fetchSummary,
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -644,6 +1067,8 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -655,6 +1080,8 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OrderSummaryEvent value)? fetchSummary,
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -698,7 +1125,7 @@ class _$OrderStateTearOff {
     return const _OrderSummaryLoadingAccept();
   }
 
-  _OrderSummaryContentAccept contentAccept(bool summaryAccept) {
+  _OrderSummaryContentAccept contentAccept(NewOrdersResponse summaryAccept) {
     return _OrderSummaryContentAccept(
       summaryAccept,
     );
@@ -706,6 +1133,55 @@ class _$OrderStateTearOff {
 
   _OrderSummaryErrorAccept errorAccept(dynamic err) {
     return _OrderSummaryErrorAccept(
+      err,
+    );
+  }
+
+  _OrderSummaryLoadingDetail loadingDetail() {
+    return const _OrderSummaryLoadingDetail();
+  }
+
+  _OrderSummaryContentDetail contentDetail(Zakazy summaryDetail) {
+    return _OrderSummaryContentDetail(
+      summaryDetail,
+    );
+  }
+
+  _OrderSummaryErrorDetail errorDetail(dynamic err) {
+    return _OrderSummaryErrorDetail(
+      err,
+    );
+  }
+
+  _OrderSummaryLoadingQrcode loadingQrcode() {
+    return const _OrderSummaryLoadingQrcode();
+  }
+
+  _OrderSummaryContentQrcode contentQrcode(bool summaryQrcode) {
+    return _OrderSummaryContentQrcode(
+      summaryQrcode,
+    );
+  }
+
+  _OrderSummaryErrorQrcode errorQrcode(dynamic err) {
+    return _OrderSummaryErrorQrcode(
+      err,
+    );
+  }
+
+  _OrderSummaryLoadingComplete loadingComplete() {
+    return const _OrderSummaryLoadingComplete();
+  }
+
+  _OrderSummaryContentComplete contentComplete(
+      CompleteResponse summaryComplete) {
+    return _OrderSummaryContentComplete(
+      summaryComplete,
+    );
+  }
+
+  _OrderSummaryErrorComplete errorComplete(dynamic err) {
+    return _OrderSummaryErrorComplete(
       err,
     );
   }
@@ -723,8 +1199,17 @@ mixin _$OrderState {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -734,8 +1219,17 @@ mixin _$OrderState {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -745,8 +1239,17 @@ mixin _$OrderState {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -759,6 +1262,17 @@ mixin _$OrderState {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -770,6 +1284,15 @@ mixin _$OrderState {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -781,6 +1304,15 @@ mixin _$OrderState {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -845,8 +1377,17 @@ class _$_Initial implements _Initial {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return initial();
   }
@@ -859,8 +1400,17 @@ class _$_Initial implements _Initial {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return initial?.call();
   }
@@ -873,8 +1423,17 @@ class _$_Initial implements _Initial {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -893,6 +1452,17 @@ class _$_Initial implements _Initial {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return initial(this);
   }
@@ -907,6 +1477,15 @@ class _$_Initial implements _Initial {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return initial?.call(this);
   }
@@ -921,6 +1500,15 @@ class _$_Initial implements _Initial {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -980,8 +1568,17 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return loading();
   }
@@ -994,8 +1591,17 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return loading?.call();
   }
@@ -1008,8 +1614,17 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1028,6 +1643,17 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return loading(this);
   }
@@ -1042,6 +1668,15 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return loading?.call(this);
   }
@@ -1056,6 +1691,15 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1140,8 +1784,17 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return content(summary);
   }
@@ -1154,8 +1807,17 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return content?.call(summary);
   }
@@ -1168,8 +1830,17 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (content != null) {
@@ -1188,6 +1859,17 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return content(this);
   }
@@ -1202,6 +1884,15 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return content?.call(this);
   }
@@ -1216,6 +1907,15 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (content != null) {
@@ -1305,8 +2005,17 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return error(err);
   }
@@ -1319,8 +2028,17 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return error?.call(err);
   }
@@ -1333,8 +2051,17 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1353,6 +2080,17 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return error(this);
   }
@@ -1367,6 +2105,15 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return error?.call(this);
   }
@@ -1381,6 +2128,15 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1447,8 +2203,17 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return loadingAccept();
   }
@@ -1461,8 +2226,17 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return loadingAccept?.call();
   }
@@ -1475,8 +2249,17 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (loadingAccept != null) {
@@ -1495,6 +2278,17 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return loadingAccept(this);
   }
@@ -1509,6 +2303,15 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return loadingAccept?.call(this);
   }
@@ -1523,6 +2326,15 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (loadingAccept != null) {
@@ -1541,7 +2353,7 @@ abstract class _$OrderSummaryContentAcceptCopyWith<$Res> {
   factory _$OrderSummaryContentAcceptCopyWith(_OrderSummaryContentAccept value,
           $Res Function(_OrderSummaryContentAccept) then) =
       __$OrderSummaryContentAcceptCopyWithImpl<$Res>;
-  $Res call({bool summaryAccept});
+  $Res call({NewOrdersResponse summaryAccept});
 }
 
 /// @nodoc
@@ -1564,7 +2376,7 @@ class __$OrderSummaryContentAcceptCopyWithImpl<$Res>
       summaryAccept == freezed
           ? _value.summaryAccept
           : summaryAccept // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as NewOrdersResponse,
     ));
   }
 }
@@ -1575,7 +2387,7 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
   const _$_OrderSummaryContentAccept(this.summaryAccept);
 
   @override
-  final bool summaryAccept;
+  final NewOrdersResponse summaryAccept;
 
   @override
   String toString() {
@@ -1610,8 +2422,17 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return contentAccept(summaryAccept);
   }
@@ -1624,8 +2445,17 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return contentAccept?.call(summaryAccept);
   }
@@ -1638,8 +2468,17 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (contentAccept != null) {
@@ -1658,6 +2497,17 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return contentAccept(this);
   }
@@ -1672,6 +2522,15 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return contentAccept?.call(this);
   }
@@ -1686,6 +2545,15 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (contentAccept != null) {
@@ -1696,10 +2564,10 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
 }
 
 abstract class _OrderSummaryContentAccept implements OrderState {
-  const factory _OrderSummaryContentAccept(bool summaryAccept) =
+  const factory _OrderSummaryContentAccept(NewOrdersResponse summaryAccept) =
       _$_OrderSummaryContentAccept;
 
-  bool get summaryAccept;
+  NewOrdersResponse get summaryAccept;
   @JsonKey(ignore: true)
   _$OrderSummaryContentAcceptCopyWith<_OrderSummaryContentAccept>
       get copyWith => throw _privateConstructorUsedError;
@@ -1777,8 +2645,17 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     required TResult Function(List<Zakaz> summary) content,
     required TResult Function(dynamic err) error,
     required TResult Function() loadingAccept,
-    required TResult Function(bool summaryAccept) contentAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
     required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
   }) {
     return errorAccept(err);
   }
@@ -1791,8 +2668,17 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
   }) {
     return errorAccept?.call(err);
   }
@@ -1805,8 +2691,17 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function(List<Zakaz> summary)? content,
     TResult Function(dynamic err)? error,
     TResult Function()? loadingAccept,
-    TResult Function(bool summaryAccept)? contentAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
     TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
     required TResult orElse(),
   }) {
     if (errorAccept != null) {
@@ -1825,6 +2720,17 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
     required TResult Function(_OrderSummaryContentAccept value) contentAccept,
     required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
   }) {
     return errorAccept(this);
   }
@@ -1839,6 +2745,15 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
   }) {
     return errorAccept?.call(this);
   }
@@ -1853,6 +2768,15 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
     TResult Function(_OrderSummaryContentAccept value)? contentAccept,
     TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
     required TResult orElse(),
   }) {
     if (errorAccept != null) {
@@ -1870,4 +2794,1931 @@ abstract class _OrderSummaryErrorAccept implements OrderState {
   @JsonKey(ignore: true)
   _$OrderSummaryErrorAcceptCopyWith<_OrderSummaryErrorAccept> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryLoadingDetailCopyWith<$Res> {
+  factory _$OrderSummaryLoadingDetailCopyWith(_OrderSummaryLoadingDetail value,
+          $Res Function(_OrderSummaryLoadingDetail) then) =
+      __$OrderSummaryLoadingDetailCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$OrderSummaryLoadingDetailCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryLoadingDetailCopyWith<$Res> {
+  __$OrderSummaryLoadingDetailCopyWithImpl(_OrderSummaryLoadingDetail _value,
+      $Res Function(_OrderSummaryLoadingDetail) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryLoadingDetail));
+
+  @override
+  _OrderSummaryLoadingDetail get _value =>
+      super._value as _OrderSummaryLoadingDetail;
+}
+
+/// @nodoc
+
+class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
+  const _$_OrderSummaryLoadingDetail();
+
+  @override
+  String toString() {
+    return 'OrderState.loadingDetail()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryLoadingDetail);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return loadingDetail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return loadingDetail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (loadingDetail != null) {
+      return loadingDetail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return loadingDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return loadingDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (loadingDetail != null) {
+      return loadingDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryLoadingDetail implements OrderState {
+  const factory _OrderSummaryLoadingDetail() = _$_OrderSummaryLoadingDetail;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryContentDetailCopyWith<$Res> {
+  factory _$OrderSummaryContentDetailCopyWith(_OrderSummaryContentDetail value,
+          $Res Function(_OrderSummaryContentDetail) then) =
+      __$OrderSummaryContentDetailCopyWithImpl<$Res>;
+  $Res call({Zakazy summaryDetail});
+}
+
+/// @nodoc
+class __$OrderSummaryContentDetailCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryContentDetailCopyWith<$Res> {
+  __$OrderSummaryContentDetailCopyWithImpl(_OrderSummaryContentDetail _value,
+      $Res Function(_OrderSummaryContentDetail) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryContentDetail));
+
+  @override
+  _OrderSummaryContentDetail get _value =>
+      super._value as _OrderSummaryContentDetail;
+
+  @override
+  $Res call({
+    Object? summaryDetail = freezed,
+  }) {
+    return _then(_OrderSummaryContentDetail(
+      summaryDetail == freezed
+          ? _value.summaryDetail
+          : summaryDetail // ignore: cast_nullable_to_non_nullable
+              as Zakazy,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
+  const _$_OrderSummaryContentDetail(this.summaryDetail);
+
+  @override
+  final Zakazy summaryDetail;
+
+  @override
+  String toString() {
+    return 'OrderState.contentDetail(summaryDetail: $summaryDetail)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryContentDetail &&
+            const DeepCollectionEquality()
+                .equals(other.summaryDetail, summaryDetail));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(summaryDetail));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryContentDetailCopyWith<_OrderSummaryContentDetail>
+      get copyWith =>
+          __$OrderSummaryContentDetailCopyWithImpl<_OrderSummaryContentDetail>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return contentDetail(summaryDetail);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return contentDetail?.call(summaryDetail);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (contentDetail != null) {
+      return contentDetail(summaryDetail);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return contentDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return contentDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (contentDetail != null) {
+      return contentDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryContentDetail implements OrderState {
+  const factory _OrderSummaryContentDetail(Zakazy summaryDetail) =
+      _$_OrderSummaryContentDetail;
+
+  Zakazy get summaryDetail;
+  @JsonKey(ignore: true)
+  _$OrderSummaryContentDetailCopyWith<_OrderSummaryContentDetail>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryErrorDetailCopyWith<$Res> {
+  factory _$OrderSummaryErrorDetailCopyWith(_OrderSummaryErrorDetail value,
+          $Res Function(_OrderSummaryErrorDetail) then) =
+      __$OrderSummaryErrorDetailCopyWithImpl<$Res>;
+  $Res call({dynamic err});
+}
+
+/// @nodoc
+class __$OrderSummaryErrorDetailCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryErrorDetailCopyWith<$Res> {
+  __$OrderSummaryErrorDetailCopyWithImpl(_OrderSummaryErrorDetail _value,
+      $Res Function(_OrderSummaryErrorDetail) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryErrorDetail));
+
+  @override
+  _OrderSummaryErrorDetail get _value =>
+      super._value as _OrderSummaryErrorDetail;
+
+  @override
+  $Res call({
+    Object? err = freezed,
+  }) {
+    return _then(_OrderSummaryErrorDetail(
+      err == freezed
+          ? _value.err
+          : err // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
+  const _$_OrderSummaryErrorDetail(this.err);
+
+  @override
+  final dynamic err;
+
+  @override
+  String toString() {
+    return 'OrderState.errorDetail(err: $err)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryErrorDetail &&
+            const DeepCollectionEquality().equals(other.err, err));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryErrorDetailCopyWith<_OrderSummaryErrorDetail> get copyWith =>
+      __$OrderSummaryErrorDetailCopyWithImpl<_OrderSummaryErrorDetail>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return errorDetail(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return errorDetail?.call(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (errorDetail != null) {
+      return errorDetail(err);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return errorDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return errorDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (errorDetail != null) {
+      return errorDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryErrorDetail implements OrderState {
+  const factory _OrderSummaryErrorDetail(dynamic err) =
+      _$_OrderSummaryErrorDetail;
+
+  dynamic get err;
+  @JsonKey(ignore: true)
+  _$OrderSummaryErrorDetailCopyWith<_OrderSummaryErrorDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryLoadingQrcodeCopyWith<$Res> {
+  factory _$OrderSummaryLoadingQrcodeCopyWith(_OrderSummaryLoadingQrcode value,
+          $Res Function(_OrderSummaryLoadingQrcode) then) =
+      __$OrderSummaryLoadingQrcodeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$OrderSummaryLoadingQrcodeCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryLoadingQrcodeCopyWith<$Res> {
+  __$OrderSummaryLoadingQrcodeCopyWithImpl(_OrderSummaryLoadingQrcode _value,
+      $Res Function(_OrderSummaryLoadingQrcode) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryLoadingQrcode));
+
+  @override
+  _OrderSummaryLoadingQrcode get _value =>
+      super._value as _OrderSummaryLoadingQrcode;
+}
+
+/// @nodoc
+
+class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
+  const _$_OrderSummaryLoadingQrcode();
+
+  @override
+  String toString() {
+    return 'OrderState.loadingQrcode()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryLoadingQrcode);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return loadingQrcode();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return loadingQrcode?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (loadingQrcode != null) {
+      return loadingQrcode();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return loadingQrcode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return loadingQrcode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (loadingQrcode != null) {
+      return loadingQrcode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryLoadingQrcode implements OrderState {
+  const factory _OrderSummaryLoadingQrcode() = _$_OrderSummaryLoadingQrcode;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryContentQrcodeCopyWith<$Res> {
+  factory _$OrderSummaryContentQrcodeCopyWith(_OrderSummaryContentQrcode value,
+          $Res Function(_OrderSummaryContentQrcode) then) =
+      __$OrderSummaryContentQrcodeCopyWithImpl<$Res>;
+  $Res call({bool summaryQrcode});
+}
+
+/// @nodoc
+class __$OrderSummaryContentQrcodeCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryContentQrcodeCopyWith<$Res> {
+  __$OrderSummaryContentQrcodeCopyWithImpl(_OrderSummaryContentQrcode _value,
+      $Res Function(_OrderSummaryContentQrcode) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryContentQrcode));
+
+  @override
+  _OrderSummaryContentQrcode get _value =>
+      super._value as _OrderSummaryContentQrcode;
+
+  @override
+  $Res call({
+    Object? summaryQrcode = freezed,
+  }) {
+    return _then(_OrderSummaryContentQrcode(
+      summaryQrcode == freezed
+          ? _value.summaryQrcode
+          : summaryQrcode // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
+  const _$_OrderSummaryContentQrcode(this.summaryQrcode);
+
+  @override
+  final bool summaryQrcode;
+
+  @override
+  String toString() {
+    return 'OrderState.contentQrcode(summaryQrcode: $summaryQrcode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryContentQrcode &&
+            const DeepCollectionEquality()
+                .equals(other.summaryQrcode, summaryQrcode));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(summaryQrcode));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryContentQrcodeCopyWith<_OrderSummaryContentQrcode>
+      get copyWith =>
+          __$OrderSummaryContentQrcodeCopyWithImpl<_OrderSummaryContentQrcode>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return contentQrcode(summaryQrcode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return contentQrcode?.call(summaryQrcode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (contentQrcode != null) {
+      return contentQrcode(summaryQrcode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return contentQrcode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return contentQrcode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (contentQrcode != null) {
+      return contentQrcode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryContentQrcode implements OrderState {
+  const factory _OrderSummaryContentQrcode(bool summaryQrcode) =
+      _$_OrderSummaryContentQrcode;
+
+  bool get summaryQrcode;
+  @JsonKey(ignore: true)
+  _$OrderSummaryContentQrcodeCopyWith<_OrderSummaryContentQrcode>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryErrorQrcodeCopyWith<$Res> {
+  factory _$OrderSummaryErrorQrcodeCopyWith(_OrderSummaryErrorQrcode value,
+          $Res Function(_OrderSummaryErrorQrcode) then) =
+      __$OrderSummaryErrorQrcodeCopyWithImpl<$Res>;
+  $Res call({dynamic err});
+}
+
+/// @nodoc
+class __$OrderSummaryErrorQrcodeCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryErrorQrcodeCopyWith<$Res> {
+  __$OrderSummaryErrorQrcodeCopyWithImpl(_OrderSummaryErrorQrcode _value,
+      $Res Function(_OrderSummaryErrorQrcode) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryErrorQrcode));
+
+  @override
+  _OrderSummaryErrorQrcode get _value =>
+      super._value as _OrderSummaryErrorQrcode;
+
+  @override
+  $Res call({
+    Object? err = freezed,
+  }) {
+    return _then(_OrderSummaryErrorQrcode(
+      err == freezed
+          ? _value.err
+          : err // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
+  const _$_OrderSummaryErrorQrcode(this.err);
+
+  @override
+  final dynamic err;
+
+  @override
+  String toString() {
+    return 'OrderState.errorQrcode(err: $err)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryErrorQrcode &&
+            const DeepCollectionEquality().equals(other.err, err));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryErrorQrcodeCopyWith<_OrderSummaryErrorQrcode> get copyWith =>
+      __$OrderSummaryErrorQrcodeCopyWithImpl<_OrderSummaryErrorQrcode>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return errorQrcode(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return errorQrcode?.call(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (errorQrcode != null) {
+      return errorQrcode(err);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return errorQrcode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return errorQrcode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (errorQrcode != null) {
+      return errorQrcode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryErrorQrcode implements OrderState {
+  const factory _OrderSummaryErrorQrcode(dynamic err) =
+      _$_OrderSummaryErrorQrcode;
+
+  dynamic get err;
+  @JsonKey(ignore: true)
+  _$OrderSummaryErrorQrcodeCopyWith<_OrderSummaryErrorQrcode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryLoadingCompleteCopyWith<$Res> {
+  factory _$OrderSummaryLoadingCompleteCopyWith(
+          _OrderSummaryLoadingComplete value,
+          $Res Function(_OrderSummaryLoadingComplete) then) =
+      __$OrderSummaryLoadingCompleteCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$OrderSummaryLoadingCompleteCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryLoadingCompleteCopyWith<$Res> {
+  __$OrderSummaryLoadingCompleteCopyWithImpl(
+      _OrderSummaryLoadingComplete _value,
+      $Res Function(_OrderSummaryLoadingComplete) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryLoadingComplete));
+
+  @override
+  _OrderSummaryLoadingComplete get _value =>
+      super._value as _OrderSummaryLoadingComplete;
+}
+
+/// @nodoc
+
+class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
+  const _$_OrderSummaryLoadingComplete();
+
+  @override
+  String toString() {
+    return 'OrderState.loadingComplete()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryLoadingComplete);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return loadingComplete();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return loadingComplete?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (loadingComplete != null) {
+      return loadingComplete();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return loadingComplete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return loadingComplete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (loadingComplete != null) {
+      return loadingComplete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryLoadingComplete implements OrderState {
+  const factory _OrderSummaryLoadingComplete() = _$_OrderSummaryLoadingComplete;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryContentCompleteCopyWith<$Res> {
+  factory _$OrderSummaryContentCompleteCopyWith(
+          _OrderSummaryContentComplete value,
+          $Res Function(_OrderSummaryContentComplete) then) =
+      __$OrderSummaryContentCompleteCopyWithImpl<$Res>;
+  $Res call({CompleteResponse summaryComplete});
+}
+
+/// @nodoc
+class __$OrderSummaryContentCompleteCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryContentCompleteCopyWith<$Res> {
+  __$OrderSummaryContentCompleteCopyWithImpl(
+      _OrderSummaryContentComplete _value,
+      $Res Function(_OrderSummaryContentComplete) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryContentComplete));
+
+  @override
+  _OrderSummaryContentComplete get _value =>
+      super._value as _OrderSummaryContentComplete;
+
+  @override
+  $Res call({
+    Object? summaryComplete = freezed,
+  }) {
+    return _then(_OrderSummaryContentComplete(
+      summaryComplete == freezed
+          ? _value.summaryComplete
+          : summaryComplete // ignore: cast_nullable_to_non_nullable
+              as CompleteResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
+  const _$_OrderSummaryContentComplete(this.summaryComplete);
+
+  @override
+  final CompleteResponse summaryComplete;
+
+  @override
+  String toString() {
+    return 'OrderState.contentComplete(summaryComplete: $summaryComplete)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryContentComplete &&
+            const DeepCollectionEquality()
+                .equals(other.summaryComplete, summaryComplete));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(summaryComplete));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryContentCompleteCopyWith<_OrderSummaryContentComplete>
+      get copyWith => __$OrderSummaryContentCompleteCopyWithImpl<
+          _OrderSummaryContentComplete>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return contentComplete(summaryComplete);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return contentComplete?.call(summaryComplete);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (contentComplete != null) {
+      return contentComplete(summaryComplete);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return contentComplete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return contentComplete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (contentComplete != null) {
+      return contentComplete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryContentComplete implements OrderState {
+  const factory _OrderSummaryContentComplete(CompleteResponse summaryComplete) =
+      _$_OrderSummaryContentComplete;
+
+  CompleteResponse get summaryComplete;
+  @JsonKey(ignore: true)
+  _$OrderSummaryContentCompleteCopyWith<_OrderSummaryContentComplete>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryErrorCompleteCopyWith<$Res> {
+  factory _$OrderSummaryErrorCompleteCopyWith(_OrderSummaryErrorComplete value,
+          $Res Function(_OrderSummaryErrorComplete) then) =
+      __$OrderSummaryErrorCompleteCopyWithImpl<$Res>;
+  $Res call({dynamic err});
+}
+
+/// @nodoc
+class __$OrderSummaryErrorCompleteCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryErrorCompleteCopyWith<$Res> {
+  __$OrderSummaryErrorCompleteCopyWithImpl(_OrderSummaryErrorComplete _value,
+      $Res Function(_OrderSummaryErrorComplete) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryErrorComplete));
+
+  @override
+  _OrderSummaryErrorComplete get _value =>
+      super._value as _OrderSummaryErrorComplete;
+
+  @override
+  $Res call({
+    Object? err = freezed,
+  }) {
+    return _then(_OrderSummaryErrorComplete(
+      err == freezed
+          ? _value.err
+          : err // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
+  const _$_OrderSummaryErrorComplete(this.err);
+
+  @override
+  final dynamic err;
+
+  @override
+  String toString() {
+    return 'OrderState.errorComplete(err: $err)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryErrorComplete &&
+            const DeepCollectionEquality().equals(other.err, err));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryErrorCompleteCopyWith<_OrderSummaryErrorComplete>
+      get copyWith =>
+          __$OrderSummaryErrorCompleteCopyWithImpl<_OrderSummaryErrorComplete>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+  }) {
+    return errorComplete(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+  }) {
+    return errorComplete?.call(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (errorComplete != null) {
+      return errorComplete(err);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+  }) {
+    return errorComplete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+  }) {
+    return errorComplete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    required TResult orElse(),
+  }) {
+    if (errorComplete != null) {
+      return errorComplete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryErrorComplete implements OrderState {
+  const factory _OrderSummaryErrorComplete(dynamic err) =
+      _$_OrderSummaryErrorComplete;
+
+  dynamic get err;
+  @JsonKey(ignore: true)
+  _$OrderSummaryErrorCompleteCopyWith<_OrderSummaryErrorComplete>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -10,7 +10,7 @@ part of 'profile_services.dart';
 
 class _ProfileList implements ProfileList {
   _ProfileList(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://192.168.8.104:8888/';
+    baseUrl ??= 'http://192.168.8.101:8888/';
   }
 
   final Dio _dio;
@@ -30,6 +30,40 @@ class _ProfileList implements ProfileList {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = ProfileResponce.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<EditPersonalResponse> getEditProfile(payload) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(payload.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<EditPersonalResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/api/account/edit',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = EditPersonalResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<EditPasswordResponse> getEditPassword(payload) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(payload.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<EditPasswordResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/api/account/edit',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = EditPasswordResponse.fromJson(_result.data!);
     return value;
   }
 

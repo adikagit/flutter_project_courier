@@ -1,6 +1,5 @@
 import 'package:dostavka/constants.dart';
 import 'package:dostavka/moduls/orders/logic/provider/provider.dart';
-import 'package:dostavka/registration/services/user_model.dart';
 import 'package:dostavka/moduls/orders/ui/screens/historyActive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +14,6 @@ import 'moduls/profile/ui/screens/profile.dart';
 import 'moduls/orders/ui/screens/orders.dart';
 
 class Home extends StatefulWidget {
-  final UserModel user;
-  Home({required this.user});
   @override
   _HomeState createState() => _HomeState();
 }
@@ -24,25 +21,24 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   late List<Widget> _widgetOptions;
 
   @override
   void initState() {
-
     super.initState();
     _widgetOptions = <Widget>[
       BlocProvider<OrderBloc>(
-        create: (context)=> OrderBloc(OrderProvider()),
+          create: (context) => OrderBloc(OrderProvider()),
           child: OrdersScreen()),
       BlocProvider<OrderBloc>(
-          create: (context)=> OrderBloc(OrderProvider()),
+          create: (context) => OrderBloc(OrderProvider()),
           child: HistoryActiveScreen()),
       BlocProvider<OrderBloc>(
-          create: (context)=> OrderBloc(OrderProvider()),
+          create: (context) => OrderBloc(OrderProvider()),
           child: HistoryEndedScreen()),
       BlocProvider<ProfileBloc>(
-          create: (context)=> ProfileBloc(ProfileProvider()),
+          create: (context) => ProfileBloc(ProfileProvider()),
           child: ProfileScreen()),
     ];
   }
@@ -52,7 +48,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions.elementAt(_selectedIndex),
         // child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: Container(
@@ -85,7 +81,7 @@ class _HomeState extends State<Home> {
                 ),
                 GButton(
                   icon: Icons.article_outlined,
-                  text: 'Актиыне',
+                  text: 'Активно',
                 ),
                 GButton(
                   icon: LineIcons.alternateList,

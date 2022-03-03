@@ -10,7 +10,7 @@ part of 'services.dart';
 
 class _OrdersList implements OrdersList {
   _OrdersList(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://192.168.8.104:8888/';
+    baseUrl ??= 'http://192.168.8.101:8888/';
   }
 
   final Dio _dio;
@@ -68,19 +68,53 @@ class _OrdersList implements OrdersList {
   }
 
   @override
-  Future<NewOrdersResponse> getComplete(newOrdersPayload) async {
+  Future<DetailResponce> getDetail(payload) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(newOrdersPayload.toJson());
+    _data.addAll(payload.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NewOrdersResponse>(
+        _setStreamType<DetailResponce>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/api/courier/orders/detail',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DetailResponce.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<QrcodeResponse> getQrcode(qrcodePayload) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(qrcodePayload.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<QrcodeResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/api/courier/orders/checkQR',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = QrcodeResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CompleteResponse> getComplete(completePayload) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(completePayload.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CompleteResponse>(
             Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/api/courier/orders/complete',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = NewOrdersResponse.fromJson(_result.data!);
+    final value = CompleteResponse.fromJson(_result.data!);
     return value;
   }
 

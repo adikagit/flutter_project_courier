@@ -1,14 +1,21 @@
 import 'package:dostavka/core/config.dart';
-import 'package:dostavka/home.dart';
-import 'package:dostavka/moduls/orders/logic/blocs/post_bloc.dart';
-import 'package:dostavka/moduls/profile/ui/screens/profile.dart';
-import 'package:dostavka/registration/screens/SignIn.dart';
+import 'package:dostavka/moduls/authorization/logic/blocs/post_bloc.dart';
+import 'package:dostavka/moduls/authorization/logic/provider/authorization_provider.dart';
+import 'package:dostavka/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
+import 'package:dostavka/moduls/authorization/ui/screens/SignIn.dart';
 
-void main() {
+import 'package:path_provider/path_provider.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Hive.init((await getApplicationDocumentsDirectory()).path);
   Bloc.observer = AppBlocObserver();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
@@ -21,17 +28,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData(),
+      home:
+          Builder(
+        builder: (BuildContext context) {
+          final screenHeight = MediaQuery.of(context).size.height;
+          return Onboarding(screenHeight: screenHeight);
+        },
       ),
-      home: SignIn(),
-        //SignIn(),
-      // Builder(
-      //   builder: (BuildContext context) {
-      //     final screenHeight = MediaQuery.of(context).size.height;
-      //     return Onboarding(screenHeight: screenHeight);
-      //   },
-      // ),
     );
   }
 }
-

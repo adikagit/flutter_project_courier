@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:dostavka/moduls/authorization/logic/blocs/post_bloc.dart';
+import 'package:dostavka/moduls/authorization/logic/provider/authorization_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../constants.dart';
-import '../registration/screens/SignIn.dart';
 import 'pages/community/index.dart';
 import 'pages/education/index.dart';
 import 'pages/onboarding_p'
@@ -12,6 +14,8 @@ import 'widgets/header.dart';
 import 'widgets/next_page_button.dart';
 import 'widgets/onboarding_page_indicator.dart';
 import 'widgets/ripple.dart';
+
+import 'package:dostavka/moduls/authorization/ui/screens/SignIn.dart';
 
 class Onboarding extends StatefulWidget {
   final double screenHeight;
@@ -208,7 +212,9 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
     //     builder: (_) => Glav(),
     //   ),
     // );
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()),);
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>BlocProvider<AuthorizationBloc>(
+          create: (context) => AuthorizationBloc(AuthorizationProvider()),
+          child: SignIn()),),);
   }
 
   @override
