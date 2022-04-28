@@ -22,4 +22,8 @@ class OrderState with _$OrderState {
   const factory OrderState.loadingComplete() = _OrderSummaryLoadingComplete;
   const factory OrderState.contentComplete(CompleteResponse summaryComplete) =_OrderSummaryContentComplete;
   const factory OrderState.errorComplete(dynamic err) = _OrderSummaryErrorComplete;
+
+  const factory OrderState.loadingImage() = _OrderSummaryLoadingImage;
+  const factory OrderState.contentImage(ImageResponse summaryImage) =_OrderSummaryContentImage;
+  const factory OrderState.errorImage(dynamic err) = _OrderSummaryErrorImage;
 }

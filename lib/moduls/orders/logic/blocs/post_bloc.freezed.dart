@@ -44,6 +44,12 @@ class _$OrderEventTearOff {
     );
   }
 
+  _OrderSummaryImage fetchSummaryImage(ImagePayload imagePayload) {
+    return _OrderSummaryImage(
+      imagePayload,
+    );
+  }
+
   _OrderSummaryComplete fetchSummaryComplete(int id, String status) {
     return _OrderSummaryComplete(
       id,
@@ -67,6 +73,7 @@ mixin _$OrderEvent {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) =>
@@ -77,6 +84,7 @@ mixin _$OrderEvent {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) =>
@@ -87,6 +95,7 @@ mixin _$OrderEvent {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -98,6 +107,7 @@ mixin _$OrderEvent {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) =>
@@ -108,6 +118,7 @@ mixin _$OrderEvent {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) =>
@@ -118,6 +129,7 @@ mixin _$OrderEvent {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -210,6 +222,7 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
@@ -223,6 +236,7 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
@@ -236,6 +250,7 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -253,6 +268,7 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -266,6 +282,7 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -279,6 +296,7 @@ class _$_OrderSummaryEvent implements _OrderSummaryEvent {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -368,6 +386,7 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
@@ -381,6 +400,7 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
@@ -394,6 +414,7 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -411,6 +432,7 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -424,6 +446,7 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -437,6 +460,7 @@ class _$_OrderSummaryAccept implements _OrderSummaryAccept {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -536,6 +560,7 @@ class _$_OrderSummaryDetail implements _OrderSummaryDetail {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
@@ -549,6 +574,7 @@ class _$_OrderSummaryDetail implements _OrderSummaryDetail {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
@@ -562,6 +588,7 @@ class _$_OrderSummaryDetail implements _OrderSummaryDetail {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -579,6 +606,7 @@ class _$_OrderSummaryDetail implements _OrderSummaryDetail {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -592,6 +620,7 @@ class _$_OrderSummaryDetail implements _OrderSummaryDetail {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -605,6 +634,7 @@ class _$_OrderSummaryDetail implements _OrderSummaryDetail {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -706,6 +736,7 @@ class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
@@ -719,6 +750,7 @@ class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
@@ -732,6 +764,7 @@ class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -749,6 +782,7 @@ class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -762,6 +796,7 @@ class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -775,6 +810,7 @@ class _$_OrderSummaryQrcode implements _OrderSummaryQrcode {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -794,6 +830,172 @@ abstract class _OrderSummaryQrcode implements OrderEvent {
   int get user_id;
   @JsonKey(ignore: true)
   _$OrderSummaryQrcodeCopyWith<_OrderSummaryQrcode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryImageCopyWith<$Res> {
+  factory _$OrderSummaryImageCopyWith(
+          _OrderSummaryImage value, $Res Function(_OrderSummaryImage) then) =
+      __$OrderSummaryImageCopyWithImpl<$Res>;
+  $Res call({ImagePayload imagePayload});
+}
+
+/// @nodoc
+class __$OrderSummaryImageCopyWithImpl<$Res>
+    extends _$OrderEventCopyWithImpl<$Res>
+    implements _$OrderSummaryImageCopyWith<$Res> {
+  __$OrderSummaryImageCopyWithImpl(
+      _OrderSummaryImage _value, $Res Function(_OrderSummaryImage) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryImage));
+
+  @override
+  _OrderSummaryImage get _value => super._value as _OrderSummaryImage;
+
+  @override
+  $Res call({
+    Object? imagePayload = freezed,
+  }) {
+    return _then(_OrderSummaryImage(
+      imagePayload == freezed
+          ? _value.imagePayload
+          : imagePayload // ignore: cast_nullable_to_non_nullable
+              as ImagePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryImage implements _OrderSummaryImage {
+  const _$_OrderSummaryImage(this.imagePayload);
+
+  @override
+  final ImagePayload imagePayload;
+
+  @override
+  String toString() {
+    return 'OrderEvent.fetchSummaryImage(imagePayload: $imagePayload)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryImage &&
+            const DeepCollectionEquality()
+                .equals(other.imagePayload, imagePayload));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(imagePayload));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryImageCopyWith<_OrderSummaryImage> get copyWith =>
+      __$OrderSummaryImageCopyWithImpl<_OrderSummaryImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String status) fetchSummary,
+    required TResult Function(int id) fetchSummaryAccept,
+    required TResult Function(int id, String status) fetchSummaryDetail,
+    required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
+    required TResult Function(int id, String status) fetchSummaryComplete,
+    required TResult Function() fetchSummaryHistory,
+  }) {
+    return fetchSummaryImage(imagePayload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String status)? fetchSummary,
+    TResult Function(int id)? fetchSummaryAccept,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
+    TResult Function(int id, String status)? fetchSummaryComplete,
+    TResult Function()? fetchSummaryHistory,
+  }) {
+    return fetchSummaryImage?.call(imagePayload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String status)? fetchSummary,
+    TResult Function(int id)? fetchSummaryAccept,
+    TResult Function(int id, String status)? fetchSummaryDetail,
+    TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
+    TResult Function(int id, String status)? fetchSummaryComplete,
+    TResult Function()? fetchSummaryHistory,
+    required TResult orElse(),
+  }) {
+    if (fetchSummaryImage != null) {
+      return fetchSummaryImage(imagePayload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderSummaryEvent value) fetchSummary,
+    required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
+    required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
+    required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
+    required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
+    required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
+  }) {
+    return fetchSummaryImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_OrderSummaryEvent value)? fetchSummary,
+    TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
+    TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
+    TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
+  }) {
+    return fetchSummaryImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderSummaryEvent value)? fetchSummary,
+    TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
+    TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
+    TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
+    TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
+    TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
+    required TResult orElse(),
+  }) {
+    if (fetchSummaryImage != null) {
+      return fetchSummaryImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryImage implements OrderEvent {
+  const factory _OrderSummaryImage(ImagePayload imagePayload) =
+      _$_OrderSummaryImage;
+
+  ImagePayload get imagePayload;
+  @JsonKey(ignore: true)
+  _$OrderSummaryImageCopyWith<_OrderSummaryImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -877,6 +1079,7 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
@@ -890,6 +1093,7 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
@@ -903,6 +1107,7 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -920,6 +1125,7 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -933,6 +1139,7 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -946,6 +1153,7 @@ class _$_OrderSummaryComplete implements _OrderSummaryComplete {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -1013,6 +1221,7 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
     required TResult Function(int id) fetchSummaryAccept,
     required TResult Function(int id, String status) fetchSummaryDetail,
     required TResult Function(int order_id, int user_id) fetchSummaryQrcode,
+    required TResult Function(ImagePayload imagePayload) fetchSummaryImage,
     required TResult Function(int id, String status) fetchSummaryComplete,
     required TResult Function() fetchSummaryHistory,
   }) {
@@ -1026,6 +1235,7 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
   }) {
@@ -1039,6 +1249,7 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
     TResult Function(int id)? fetchSummaryAccept,
     TResult Function(int id, String status)? fetchSummaryDetail,
     TResult Function(int order_id, int user_id)? fetchSummaryQrcode,
+    TResult Function(ImagePayload imagePayload)? fetchSummaryImage,
     TResult Function(int id, String status)? fetchSummaryComplete,
     TResult Function()? fetchSummaryHistory,
     required TResult orElse(),
@@ -1056,6 +1267,7 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
     required TResult Function(_OrderSummaryAccept value) fetchSummaryAccept,
     required TResult Function(_OrderSummaryDetail value) fetchSummaryDetail,
     required TResult Function(_OrderSummaryQrcode value) fetchSummaryQrcode,
+    required TResult Function(_OrderSummaryImage value) fetchSummaryImage,
     required TResult Function(_OrderSummaryComplete value) fetchSummaryComplete,
     required TResult Function(_OrderSummaryHistory value) fetchSummaryHistory,
   }) {
@@ -1069,6 +1281,7 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
   }) {
@@ -1082,6 +1295,7 @@ class _$_OrderSummaryHistory implements _OrderSummaryHistory {
     TResult Function(_OrderSummaryAccept value)? fetchSummaryAccept,
     TResult Function(_OrderSummaryDetail value)? fetchSummaryDetail,
     TResult Function(_OrderSummaryQrcode value)? fetchSummaryQrcode,
+    TResult Function(_OrderSummaryImage value)? fetchSummaryImage,
     TResult Function(_OrderSummaryComplete value)? fetchSummaryComplete,
     TResult Function(_OrderSummaryHistory value)? fetchSummaryHistory,
     required TResult orElse(),
@@ -1185,6 +1399,22 @@ class _$OrderStateTearOff {
       err,
     );
   }
+
+  _OrderSummaryLoadingImage loadingImage() {
+    return const _OrderSummaryLoadingImage();
+  }
+
+  _OrderSummaryContentImage contentImage(ImageResponse summaryImage) {
+    return _OrderSummaryContentImage(
+      summaryImage,
+    );
+  }
+
+  _OrderSummaryErrorImage errorImage(dynamic err) {
+    return _OrderSummaryErrorImage(
+      err,
+    );
+  }
 }
 
 /// @nodoc
@@ -1210,6 +1440,9 @@ mixin _$OrderState {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1230,6 +1463,9 @@ mixin _$OrderState {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1250,6 +1486,9 @@ mixin _$OrderState {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1273,6 +1512,9 @@ mixin _$OrderState {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1293,6 +1535,9 @@ mixin _$OrderState {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1313,6 +1558,9 @@ mixin _$OrderState {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1388,6 +1636,9 @@ class _$_Initial implements _Initial {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return initial();
   }
@@ -1411,6 +1662,9 @@ class _$_Initial implements _Initial {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return initial?.call();
   }
@@ -1434,6 +1688,9 @@ class _$_Initial implements _Initial {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1463,6 +1720,9 @@ class _$_Initial implements _Initial {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return initial(this);
   }
@@ -1486,6 +1746,9 @@ class _$_Initial implements _Initial {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return initial?.call(this);
   }
@@ -1509,6 +1772,9 @@ class _$_Initial implements _Initial {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1579,6 +1845,9 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return loading();
   }
@@ -1602,6 +1871,9 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return loading?.call();
   }
@@ -1625,6 +1897,9 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1654,6 +1929,9 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return loading(this);
   }
@@ -1677,6 +1955,9 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return loading?.call(this);
   }
@@ -1700,6 +1981,9 @@ class _$_OrderSummaryLoading implements _OrderSummaryLoading {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1795,6 +2079,9 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return content(summary);
   }
@@ -1818,6 +2105,9 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return content?.call(summary);
   }
@@ -1841,6 +2131,9 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (content != null) {
@@ -1870,6 +2163,9 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return content(this);
   }
@@ -1893,6 +2189,9 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return content?.call(this);
   }
@@ -1916,6 +2215,9 @@ class _$_OrderSummaryContent implements _OrderSummaryContent {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (content != null) {
@@ -2016,6 +2318,9 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return error(err);
   }
@@ -2039,6 +2344,9 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return error?.call(err);
   }
@@ -2062,6 +2370,9 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2091,6 +2402,9 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return error(this);
   }
@@ -2114,6 +2428,9 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return error?.call(this);
   }
@@ -2137,6 +2454,9 @@ class _$_OrderSummaryError implements _OrderSummaryError {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -2214,6 +2534,9 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return loadingAccept();
   }
@@ -2237,6 +2560,9 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return loadingAccept?.call();
   }
@@ -2260,6 +2586,9 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingAccept != null) {
@@ -2289,6 +2618,9 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return loadingAccept(this);
   }
@@ -2312,6 +2644,9 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return loadingAccept?.call(this);
   }
@@ -2335,6 +2670,9 @@ class _$_OrderSummaryLoadingAccept implements _OrderSummaryLoadingAccept {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingAccept != null) {
@@ -2433,6 +2771,9 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return contentAccept(summaryAccept);
   }
@@ -2456,6 +2797,9 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return contentAccept?.call(summaryAccept);
   }
@@ -2479,6 +2823,9 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (contentAccept != null) {
@@ -2508,6 +2855,9 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return contentAccept(this);
   }
@@ -2531,6 +2881,9 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return contentAccept?.call(this);
   }
@@ -2554,6 +2907,9 @@ class _$_OrderSummaryContentAccept implements _OrderSummaryContentAccept {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (contentAccept != null) {
@@ -2656,6 +3012,9 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return errorAccept(err);
   }
@@ -2679,6 +3038,9 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return errorAccept?.call(err);
   }
@@ -2702,6 +3064,9 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (errorAccept != null) {
@@ -2731,6 +3096,9 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return errorAccept(this);
   }
@@ -2754,6 +3122,9 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return errorAccept?.call(this);
   }
@@ -2777,6 +3148,9 @@ class _$_OrderSummaryErrorAccept implements _OrderSummaryErrorAccept {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (errorAccept != null) {
@@ -2855,6 +3229,9 @@ class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return loadingDetail();
   }
@@ -2878,6 +3255,9 @@ class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return loadingDetail?.call();
   }
@@ -2901,6 +3281,9 @@ class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingDetail != null) {
@@ -2930,6 +3313,9 @@ class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return loadingDetail(this);
   }
@@ -2953,6 +3339,9 @@ class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return loadingDetail?.call(this);
   }
@@ -2976,6 +3365,9 @@ class _$_OrderSummaryLoadingDetail implements _OrderSummaryLoadingDetail {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingDetail != null) {
@@ -3074,6 +3466,9 @@ class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return contentDetail(summaryDetail);
   }
@@ -3097,6 +3492,9 @@ class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return contentDetail?.call(summaryDetail);
   }
@@ -3120,6 +3518,9 @@ class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (contentDetail != null) {
@@ -3149,6 +3550,9 @@ class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return contentDetail(this);
   }
@@ -3172,6 +3576,9 @@ class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return contentDetail?.call(this);
   }
@@ -3195,6 +3602,9 @@ class _$_OrderSummaryContentDetail implements _OrderSummaryContentDetail {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (contentDetail != null) {
@@ -3297,6 +3707,9 @@ class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return errorDetail(err);
   }
@@ -3320,6 +3733,9 @@ class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return errorDetail?.call(err);
   }
@@ -3343,6 +3759,9 @@ class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (errorDetail != null) {
@@ -3372,6 +3791,9 @@ class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return errorDetail(this);
   }
@@ -3395,6 +3817,9 @@ class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return errorDetail?.call(this);
   }
@@ -3418,6 +3843,9 @@ class _$_OrderSummaryErrorDetail implements _OrderSummaryErrorDetail {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (errorDetail != null) {
@@ -3496,6 +3924,9 @@ class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return loadingQrcode();
   }
@@ -3519,6 +3950,9 @@ class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return loadingQrcode?.call();
   }
@@ -3542,6 +3976,9 @@ class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingQrcode != null) {
@@ -3571,6 +4008,9 @@ class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return loadingQrcode(this);
   }
@@ -3594,6 +4034,9 @@ class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return loadingQrcode?.call(this);
   }
@@ -3617,6 +4060,9 @@ class _$_OrderSummaryLoadingQrcode implements _OrderSummaryLoadingQrcode {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingQrcode != null) {
@@ -3715,6 +4161,9 @@ class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return contentQrcode(summaryQrcode);
   }
@@ -3738,6 +4187,9 @@ class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return contentQrcode?.call(summaryQrcode);
   }
@@ -3761,6 +4213,9 @@ class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (contentQrcode != null) {
@@ -3790,6 +4245,9 @@ class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return contentQrcode(this);
   }
@@ -3813,6 +4271,9 @@ class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return contentQrcode?.call(this);
   }
@@ -3836,6 +4297,9 @@ class _$_OrderSummaryContentQrcode implements _OrderSummaryContentQrcode {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (contentQrcode != null) {
@@ -3938,6 +4402,9 @@ class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return errorQrcode(err);
   }
@@ -3961,6 +4428,9 @@ class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return errorQrcode?.call(err);
   }
@@ -3984,6 +4454,9 @@ class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (errorQrcode != null) {
@@ -4013,6 +4486,9 @@ class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return errorQrcode(this);
   }
@@ -4036,6 +4512,9 @@ class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return errorQrcode?.call(this);
   }
@@ -4059,6 +4538,9 @@ class _$_OrderSummaryErrorQrcode implements _OrderSummaryErrorQrcode {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (errorQrcode != null) {
@@ -4139,6 +4621,9 @@ class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return loadingComplete();
   }
@@ -4162,6 +4647,9 @@ class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return loadingComplete?.call();
   }
@@ -4185,6 +4673,9 @@ class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingComplete != null) {
@@ -4214,6 +4705,9 @@ class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return loadingComplete(this);
   }
@@ -4237,6 +4731,9 @@ class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return loadingComplete?.call(this);
   }
@@ -4260,6 +4757,9 @@ class _$_OrderSummaryLoadingComplete implements _OrderSummaryLoadingComplete {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (loadingComplete != null) {
@@ -4359,6 +4859,9 @@ class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return contentComplete(summaryComplete);
   }
@@ -4382,6 +4885,9 @@ class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return contentComplete?.call(summaryComplete);
   }
@@ -4405,6 +4911,9 @@ class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (contentComplete != null) {
@@ -4434,6 +4943,9 @@ class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return contentComplete(this);
   }
@@ -4457,6 +4969,9 @@ class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return contentComplete?.call(this);
   }
@@ -4480,6 +4995,9 @@ class _$_OrderSummaryContentComplete implements _OrderSummaryContentComplete {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (contentComplete != null) {
@@ -4583,6 +5101,9 @@ class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
     required TResult Function() loadingComplete,
     required TResult Function(CompleteResponse summaryComplete) contentComplete,
     required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
   }) {
     return errorComplete(err);
   }
@@ -4606,6 +5127,9 @@ class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
   }) {
     return errorComplete?.call(err);
   }
@@ -4629,6 +5153,9 @@ class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
     TResult Function()? loadingComplete,
     TResult Function(CompleteResponse summaryComplete)? contentComplete,
     TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
     required TResult orElse(),
   }) {
     if (errorComplete != null) {
@@ -4658,6 +5185,9 @@ class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
     required TResult Function(_OrderSummaryContentComplete value)
         contentComplete,
     required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
   }) {
     return errorComplete(this);
   }
@@ -4681,6 +5211,9 @@ class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
   }) {
     return errorComplete?.call(this);
   }
@@ -4704,6 +5237,9 @@ class _$_OrderSummaryErrorComplete implements _OrderSummaryErrorComplete {
     TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
     TResult Function(_OrderSummaryContentComplete value)? contentComplete,
     TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
     required TResult orElse(),
   }) {
     if (errorComplete != null) {
@@ -4721,4 +5257,697 @@ abstract class _OrderSummaryErrorComplete implements OrderState {
   @JsonKey(ignore: true)
   _$OrderSummaryErrorCompleteCopyWith<_OrderSummaryErrorComplete>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryLoadingImageCopyWith<$Res> {
+  factory _$OrderSummaryLoadingImageCopyWith(_OrderSummaryLoadingImage value,
+          $Res Function(_OrderSummaryLoadingImage) then) =
+      __$OrderSummaryLoadingImageCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$OrderSummaryLoadingImageCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryLoadingImageCopyWith<$Res> {
+  __$OrderSummaryLoadingImageCopyWithImpl(_OrderSummaryLoadingImage _value,
+      $Res Function(_OrderSummaryLoadingImage) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryLoadingImage));
+
+  @override
+  _OrderSummaryLoadingImage get _value =>
+      super._value as _OrderSummaryLoadingImage;
+}
+
+/// @nodoc
+
+class _$_OrderSummaryLoadingImage implements _OrderSummaryLoadingImage {
+  const _$_OrderSummaryLoadingImage();
+
+  @override
+  String toString() {
+    return 'OrderState.loadingImage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryLoadingImage);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
+  }) {
+    return loadingImage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
+  }) {
+    return loadingImage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
+    required TResult orElse(),
+  }) {
+    if (loadingImage != null) {
+      return loadingImage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
+  }) {
+    return loadingImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
+  }) {
+    return loadingImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
+    required TResult orElse(),
+  }) {
+    if (loadingImage != null) {
+      return loadingImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryLoadingImage implements OrderState {
+  const factory _OrderSummaryLoadingImage() = _$_OrderSummaryLoadingImage;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryContentImageCopyWith<$Res> {
+  factory _$OrderSummaryContentImageCopyWith(_OrderSummaryContentImage value,
+          $Res Function(_OrderSummaryContentImage) then) =
+      __$OrderSummaryContentImageCopyWithImpl<$Res>;
+  $Res call({ImageResponse summaryImage});
+}
+
+/// @nodoc
+class __$OrderSummaryContentImageCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryContentImageCopyWith<$Res> {
+  __$OrderSummaryContentImageCopyWithImpl(_OrderSummaryContentImage _value,
+      $Res Function(_OrderSummaryContentImage) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryContentImage));
+
+  @override
+  _OrderSummaryContentImage get _value =>
+      super._value as _OrderSummaryContentImage;
+
+  @override
+  $Res call({
+    Object? summaryImage = freezed,
+  }) {
+    return _then(_OrderSummaryContentImage(
+      summaryImage == freezed
+          ? _value.summaryImage
+          : summaryImage // ignore: cast_nullable_to_non_nullable
+              as ImageResponse,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryContentImage implements _OrderSummaryContentImage {
+  const _$_OrderSummaryContentImage(this.summaryImage);
+
+  @override
+  final ImageResponse summaryImage;
+
+  @override
+  String toString() {
+    return 'OrderState.contentImage(summaryImage: $summaryImage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryContentImage &&
+            const DeepCollectionEquality()
+                .equals(other.summaryImage, summaryImage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(summaryImage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryContentImageCopyWith<_OrderSummaryContentImage> get copyWith =>
+      __$OrderSummaryContentImageCopyWithImpl<_OrderSummaryContentImage>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
+  }) {
+    return contentImage(summaryImage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
+  }) {
+    return contentImage?.call(summaryImage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
+    required TResult orElse(),
+  }) {
+    if (contentImage != null) {
+      return contentImage(summaryImage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
+  }) {
+    return contentImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
+  }) {
+    return contentImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
+    required TResult orElse(),
+  }) {
+    if (contentImage != null) {
+      return contentImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryContentImage implements OrderState {
+  const factory _OrderSummaryContentImage(ImageResponse summaryImage) =
+      _$_OrderSummaryContentImage;
+
+  ImageResponse get summaryImage;
+  @JsonKey(ignore: true)
+  _$OrderSummaryContentImageCopyWith<_OrderSummaryContentImage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OrderSummaryErrorImageCopyWith<$Res> {
+  factory _$OrderSummaryErrorImageCopyWith(_OrderSummaryErrorImage value,
+          $Res Function(_OrderSummaryErrorImage) then) =
+      __$OrderSummaryErrorImageCopyWithImpl<$Res>;
+  $Res call({dynamic err});
+}
+
+/// @nodoc
+class __$OrderSummaryErrorImageCopyWithImpl<$Res>
+    extends _$OrderStateCopyWithImpl<$Res>
+    implements _$OrderSummaryErrorImageCopyWith<$Res> {
+  __$OrderSummaryErrorImageCopyWithImpl(_OrderSummaryErrorImage _value,
+      $Res Function(_OrderSummaryErrorImage) _then)
+      : super(_value, (v) => _then(v as _OrderSummaryErrorImage));
+
+  @override
+  _OrderSummaryErrorImage get _value => super._value as _OrderSummaryErrorImage;
+
+  @override
+  $Res call({
+    Object? err = freezed,
+  }) {
+    return _then(_OrderSummaryErrorImage(
+      err == freezed
+          ? _value.err
+          : err // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrderSummaryErrorImage implements _OrderSummaryErrorImage {
+  const _$_OrderSummaryErrorImage(this.err);
+
+  @override
+  final dynamic err;
+
+  @override
+  String toString() {
+    return 'OrderState.errorImage(err: $err)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OrderSummaryErrorImage &&
+            const DeepCollectionEquality().equals(other.err, err));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OrderSummaryErrorImageCopyWith<_OrderSummaryErrorImage> get copyWith =>
+      __$OrderSummaryErrorImageCopyWithImpl<_OrderSummaryErrorImage>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Zakaz> summary) content,
+    required TResult Function(dynamic err) error,
+    required TResult Function() loadingAccept,
+    required TResult Function(NewOrdersResponse summaryAccept) contentAccept,
+    required TResult Function(dynamic err) errorAccept,
+    required TResult Function() loadingDetail,
+    required TResult Function(Zakazy summaryDetail) contentDetail,
+    required TResult Function(dynamic err) errorDetail,
+    required TResult Function() loadingQrcode,
+    required TResult Function(bool summaryQrcode) contentQrcode,
+    required TResult Function(dynamic err) errorQrcode,
+    required TResult Function() loadingComplete,
+    required TResult Function(CompleteResponse summaryComplete) contentComplete,
+    required TResult Function(dynamic err) errorComplete,
+    required TResult Function() loadingImage,
+    required TResult Function(ImageResponse summaryImage) contentImage,
+    required TResult Function(dynamic err) errorImage,
+  }) {
+    return errorImage(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
+  }) {
+    return errorImage?.call(err);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Zakaz> summary)? content,
+    TResult Function(dynamic err)? error,
+    TResult Function()? loadingAccept,
+    TResult Function(NewOrdersResponse summaryAccept)? contentAccept,
+    TResult Function(dynamic err)? errorAccept,
+    TResult Function()? loadingDetail,
+    TResult Function(Zakazy summaryDetail)? contentDetail,
+    TResult Function(dynamic err)? errorDetail,
+    TResult Function()? loadingQrcode,
+    TResult Function(bool summaryQrcode)? contentQrcode,
+    TResult Function(dynamic err)? errorQrcode,
+    TResult Function()? loadingComplete,
+    TResult Function(CompleteResponse summaryComplete)? contentComplete,
+    TResult Function(dynamic err)? errorComplete,
+    TResult Function()? loadingImage,
+    TResult Function(ImageResponse summaryImage)? contentImage,
+    TResult Function(dynamic err)? errorImage,
+    required TResult orElse(),
+  }) {
+    if (errorImage != null) {
+      return errorImage(err);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OrderSummaryLoading value) loading,
+    required TResult Function(_OrderSummaryContent value) content,
+    required TResult Function(_OrderSummaryError value) error,
+    required TResult Function(_OrderSummaryLoadingAccept value) loadingAccept,
+    required TResult Function(_OrderSummaryContentAccept value) contentAccept,
+    required TResult Function(_OrderSummaryErrorAccept value) errorAccept,
+    required TResult Function(_OrderSummaryLoadingDetail value) loadingDetail,
+    required TResult Function(_OrderSummaryContentDetail value) contentDetail,
+    required TResult Function(_OrderSummaryErrorDetail value) errorDetail,
+    required TResult Function(_OrderSummaryLoadingQrcode value) loadingQrcode,
+    required TResult Function(_OrderSummaryContentQrcode value) contentQrcode,
+    required TResult Function(_OrderSummaryErrorQrcode value) errorQrcode,
+    required TResult Function(_OrderSummaryLoadingComplete value)
+        loadingComplete,
+    required TResult Function(_OrderSummaryContentComplete value)
+        contentComplete,
+    required TResult Function(_OrderSummaryErrorComplete value) errorComplete,
+    required TResult Function(_OrderSummaryLoadingImage value) loadingImage,
+    required TResult Function(_OrderSummaryContentImage value) contentImage,
+    required TResult Function(_OrderSummaryErrorImage value) errorImage,
+  }) {
+    return errorImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
+  }) {
+    return errorImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OrderSummaryLoading value)? loading,
+    TResult Function(_OrderSummaryContent value)? content,
+    TResult Function(_OrderSummaryError value)? error,
+    TResult Function(_OrderSummaryLoadingAccept value)? loadingAccept,
+    TResult Function(_OrderSummaryContentAccept value)? contentAccept,
+    TResult Function(_OrderSummaryErrorAccept value)? errorAccept,
+    TResult Function(_OrderSummaryLoadingDetail value)? loadingDetail,
+    TResult Function(_OrderSummaryContentDetail value)? contentDetail,
+    TResult Function(_OrderSummaryErrorDetail value)? errorDetail,
+    TResult Function(_OrderSummaryLoadingQrcode value)? loadingQrcode,
+    TResult Function(_OrderSummaryContentQrcode value)? contentQrcode,
+    TResult Function(_OrderSummaryErrorQrcode value)? errorQrcode,
+    TResult Function(_OrderSummaryLoadingComplete value)? loadingComplete,
+    TResult Function(_OrderSummaryContentComplete value)? contentComplete,
+    TResult Function(_OrderSummaryErrorComplete value)? errorComplete,
+    TResult Function(_OrderSummaryLoadingImage value)? loadingImage,
+    TResult Function(_OrderSummaryContentImage value)? contentImage,
+    TResult Function(_OrderSummaryErrorImage value)? errorImage,
+    required TResult orElse(),
+  }) {
+    if (errorImage != null) {
+      return errorImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderSummaryErrorImage implements OrderState {
+  const factory _OrderSummaryErrorImage(dynamic err) =
+      _$_OrderSummaryErrorImage;
+
+  dynamic get err;
+  @JsonKey(ignore: true)
+  _$OrderSummaryErrorImageCopyWith<_OrderSummaryErrorImage> get copyWith =>
+      throw _privateConstructorUsedError;
 }

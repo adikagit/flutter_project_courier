@@ -1,16 +1,12 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:dostavka/constants.dart';
-import 'package:dostavka/core/network/httpService.dart';
 import 'package:dostavka/moduls/orders/logic/blocs/post_bloc.dart';
 import 'package:dostavka/moduls/orders/logic/provider/provider.dart';
-import 'package:dostavka/moduls/orders/logic/zmodels/list_response.dart';
-import 'package:dostavka/moduls/orders/ui/widgets/podrobno.dart';
-import 'package:dostavka/moduls/orders/ui/widgets/showModalBottomSheet.dart';
+import 'package:dostavka/moduls/orders/ui/widgets/modalBottomSheetHistory.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:grouped_list/grouped_list.dart';
+import 'package:intl/intl.dart';
 
 class HistoryEndedScreen extends StatefulWidget {
   const HistoryEndedScreen({Key? key}) : super(key: key);
@@ -65,12 +61,48 @@ class _HistoryEndedScreenState extends State<HistoryEndedScreen> {
                     //     .sort((a, b) => b.totalConfirmed.compareTo(a.totalConfirmed));
                     if (summary.isEmpty) {
                       return Center(
-                          child: Text(
-                        "Нет заказов",
-                        style: TextStyle(fontSize: 20),
-                      ));
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 300,
+                                width: 300,
+                                margin: EdgeInsets.only(top: 75),
+                                child: Image.asset("assets/images/zhdun.png"),
+                              ),
+                              // SizedBox(height: 10,),
+                              Text(
+                                "Нет заказов",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.black54),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
                     } else {
-                      return ListView.builder(
+                      dynamic inde;
+                      return GroupedListView<dynamic, String>(
+                        elements: summary,
+                        groupBy: (element) =>
+                            element["${summary[inde].created ?? 0}"],
+                        groupComparator: (value1, value2) =>
+                            value2.compareTo(value1),
+                        itemComparator: (item1, item2) =>
+                            item1["${summary[inde].id ?? 0}"]
+                                .compareTo(item2["${summary[inde].id ?? 0}"]),
+                        order: GroupedListOrder.DESC,
+                        useStickyGroupSeparators: true,
+                        groupSeparatorBuilder: (String value) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            value,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
@@ -88,16 +120,17 @@ class _HistoryEndedScreenState extends State<HistoryEndedScreen> {
                                   ),
                                   child: ListTile(
                                     title: Text(
-                                      summary[index].addressPickup ?? '',
+                                      "Заказ № ${summary[index].id ?? 0}",
                                       style: TextStyle(
                                           fontSize: 21, color: Colors.black87),
                                     ),
-                                    subtitle: Text(
-                                      summary[index].status ?? '',
+
+                                    trailing: Text(
+                                      "${DateFormat.yMMMEd().format(summary[index].created!)}",
                                       style: TextStyle(
-                                          fontSize: 17, color: Colors.black54),
+                                          fontSize: 16, color: Colors.black54),
                                     ),
-                                    
+
                                     onTap: () => showModalBottomSheet(
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.vertical(
@@ -129,7 +162,6 @@ class _HistoryEndedScreenState extends State<HistoryEndedScreen> {
                             ),
                           );
                         },
-                        itemCount: summary.length,
                       );
                     }
                   }
@@ -142,109 +174,4 @@ class _HistoryEndedScreenState extends State<HistoryEndedScreen> {
           ),
         ));
   }
-
-  // Widget buildSheet() => Container(
-  //       height: 630,
-  //       padding: const EdgeInsets.all(20),
-  //       child: Column(
-  //         children: [
-  //           Divider(
-  //               height: 10,
-  //               thickness: 3,
-  //               indent: 160,
-  //               endIndent: 160,
-  //               color: Colors.black54),
-  //           SizedBox(
-  //             height: 20,
-  //           ),
-  //           Container(
-  //             margin: EdgeInsets.all(15.0),
-  //             child: SingleChildScrollView(
-  //               child: Column(
-  //                 children: [
-  //                   Container(
-  //                     width: width,
-  //                     child: Card(
-  //                       shape: RoundedRectangleBorder(
-  //                           borderRadius: BorderRadius.circular(10)),
-  //                       elevation: 5,
-  //                       child: Padding(
-  //                         padding: const EdgeInsets.all(20.0),
-  //                         child: Column(
-  //                           children: [
-  //                             Text(
-  //                               summaryDetail.addressPickup ?? "",
-  //                               style: TextStyle(
-  //                                   fontSize: 22, color: Colors.black87),
-  //                             ),
-  //                             SizedBox(
-  //                               height: 5,
-  //                             ),
-  //                             Text(
-  //                               summaryDetail.status ?? "",
-  //                               style: TextStyle(
-  //                                   fontSize: 16, color: Colors.black54),
-  //                             ),
-  //                           ],
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ),
-  //                   SizedBox(
-  //                     height: 10,
-  //                   ),
-  //                   Container(
-  //                     width: width,
-  //                     child: Card(
-  //                       shape: RoundedRectangleBorder(
-  //                           borderRadius: BorderRadius.circular(10)),
-  //                       elevation: 5,
-  //                       child: Padding(
-  //                         padding: const EdgeInsets.all(20.0),
-  //                         child: Column(
-  //                           children: [
-  //                             Text(
-  //                               summaryDetail.addressDelivery ?? "",
-  //                               style: TextStyle(
-  //                                   fontSize: 22, color: Colors.black87),
-  //                             ),
-  //                             SizedBox(
-  //                               height: 5,
-  //                             ),
-  //                             Text(
-  //                               summaryDetail.clientFullName ?? "",
-  //                               style: TextStyle(
-  //                                   fontSize: 16, color: Colors.black54),
-  //                             ),
-  //                             SizedBox(
-  //                               height: 5,
-  //                             ),
-  //                             Text(
-  //                               summaryDetail.clientPhoneNumber ?? "",
-  //                               style: TextStyle(
-  //                                   fontSize: 16, color: Colors.black54),
-  //                             ),
-  //                             SizedBox(
-  //                               height: 5,
-  //                             ),
-  //                             Text(
-  //                               summaryDetail.status ?? "",
-  //                               style: TextStyle(
-  //                                   fontSize: 16, color: Colors.black54),
-  //                             ),
-  //                             SizedBox(
-  //                               height: 10,
-  //                             ),
-  //                           ],
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     );
 }

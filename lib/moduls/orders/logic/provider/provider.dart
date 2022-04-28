@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:dostavka/core/network/httpService.dart';
 import 'package:dostavka/moduls/orders/logic/services/services.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/detail_payload.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/detail_response.dart';
+import 'package:dostavka/moduls/orders/logic/zmodels/image_payload.dart';
+import 'package:dostavka/moduls/orders/logic/zmodels/image_response.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/list_response.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/newOrders_payload.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/newOrders_response.dart';
@@ -10,7 +14,8 @@ import 'package:dostavka/moduls/orders/logic/zmodels/qrcode_payload.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/qrcode_response.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/complete_payload.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/complete_response.dart';
-import 'package:dostavka/moduls/profile/logic/zmodels/profile_response.dart';
+import 'package:dio/dio.dart';
+
 
 HttpService _httpService = HttpService();
 
@@ -57,5 +62,11 @@ class OrderProvider {
     CompleteResponse responseComplete = await service
         .getComplete(CompletePayload(id: id, requestStatus: status));
     return responseComplete;
+  }
+
+  Future<ImageResponse> getImage(ImagePayload imagePayload) async {
+    var service = OrdersList(_httpService.dio);
+    ImageResponse responseImage = await service.getImage(client_id: imagePayload.client_id, photo: imagePayload.photo);
+    return responseImage;
   }
 }

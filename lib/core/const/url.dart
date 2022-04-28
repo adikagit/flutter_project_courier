@@ -1,5 +1,3 @@
-// const String baseUrl = 'http://192.168.8.101:8888/';
-
 class Urls {
-  static const String baseUrl = 'http://192.168.8.101:8888/';
+  static const String baseUrl = 'http://192.168.8.100:8888/';
 }

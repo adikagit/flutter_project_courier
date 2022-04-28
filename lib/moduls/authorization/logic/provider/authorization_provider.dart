@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:dostavka/core/network/httpService.dart';
 import 'package:dostavka/moduls/authorization/logic/services/authorization_services.dart';
 import 'package:dostavka/moduls/authorization/logic/zmodels/authorization_payload.dart';
@@ -17,9 +18,17 @@ class AuthorizationProvider {
         await service.getAuthorization(
             AuthorizationPayload(username: username, password: password));
 
-    keyBox = await Hive.openBox('HiveToken');
-    keyBox.put('tokenZ', responseAuthorization.data!.token);
+    // if (responseAuthorization.data == null) {
 
+    // }
+
+    keyBox = Hive.isBoxOpen('HiveToken')
+        ? Hive.box('HiveToken')
+        : await Hive.openBox('HiveToken');
+
+    keyBox.put('tokenZ', responseAuthorization.data!.token);
+    // if(keyBox.put('tokenZ', responseAuthorization.data!.token)==""){}
+    print(keyBox.put('tokenZ', responseAuthorization.data!.token));
     return responseAuthorization;
   }
 

@@ -8,12 +8,13 @@ part of 'authorization_response.dart';
 
 AuthorizationResponse _$AuthorizationResponseFromJson(
         Map<String, dynamic> json) =>
-    AuthorizationResponse()
-      ..message = json['message'] as String?
-      ..data = json['data'] == null
+    AuthorizationResponse(
+      message: json['message'] as String?,
+      data: json['data'] == null
           ? null
-          : Token.fromJson(json['data'] as Map<String, dynamic>)
-      ..status = json['status'] as String?;
+          : Token.fromJson(json['data'] as Map<String, dynamic>),
+      status: json['status'] as String?,
+    );
 
 Map<String, dynamic> _$AuthorizationResponseToJson(
         AuthorizationResponse instance) =>

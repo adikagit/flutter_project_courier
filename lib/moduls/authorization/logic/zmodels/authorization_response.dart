@@ -12,7 +12,7 @@ Token? data;
 @JsonKey(name: "status")
 String? status;
 
-  AuthorizationResponse();
+  AuthorizationResponse({required this.message,required this.data,required this.status});
 
   factory AuthorizationResponse.fromJson(Map<String, dynamic>json)=>_$AuthorizationResponseFromJson(json);
   Map<String, dynamic> toJson() => _$AuthorizationResponseToJson(this);

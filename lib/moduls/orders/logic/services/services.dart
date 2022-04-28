@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dostavka/core/const/url.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/detail_payload.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/detail_response.dart';
@@ -28,7 +30,7 @@ abstract class OrdersList {
   Future<NewOrdersResponse> getAccept(
       @Body() NewOrdersPayload newOrdersPayload);
 
-  @POST("/api/courier/orders/detail")
+  @POST("/api/all/orders/detail")
   Future<DetailResponce> getDetail(@Body() DetailPayload payload);
 
   @POST("/api/courier/orders/checkQR")
@@ -36,4 +38,11 @@ abstract class OrdersList {
 
   @POST("/api/courier/orders/complete")
   Future<CompleteResponse> getComplete(@Body() CompletePayload completePayload);
+
+  @POST("/api/courier/orders/identification")
+  @MultiPart()
+  Future<dynamic> getImage({
+    @Part() required int? client_id,
+    @Part() File? photo,
+  });
 }

@@ -1,26 +1,28 @@
+import 'package:dio/dio.dart';
 import 'package:dostavka/home.dart';
 import 'package:dostavka/moduls/authorization/logic/blocs/post_bloc.dart';
 import 'package:dostavka/moduls/authorization/ui/widgets/Img.dart';
 import 'package:dostavka/constants.dart';
 import 'package:dostavka/moduls/authorization/ui/widgets/showDialogPasswordRecovery.dart';
-import 'package:dostavka/moduls/orders/logic/blocs/post_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:line_icons/line_icons.dart';
 
 class SignIn extends StatefulWidget {
-  // const SignIn({ Key? key }) : super(key: key);
-
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+  bool isLoading = false;
+  bool isLoggedIn = false;
+
   late TextEditingController _username;
   late TextEditingController _password;
 
   final _formKey = GlobalKey<FormState>();
-
+  bool _passwordVisible = true;
   @override
   void initState() {
     super.initState();
@@ -28,18 +30,29 @@ class _SignInState extends State<SignIn> {
     _password = TextEditingController();
   }
 
-  bool _isLoading = false;
+  bool _isLoading = true;
 
-  void auth() async {
+  void auth() {
+    _isLoading;
     if (_formKey.currentState!.validate()) {
       BlocProvider.of<AuthorizationBloc>(context).add(
           AuthorizationEvent.fetchSummaryAuthorization(
               _username.text, _password.text));
-
-      
+      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     } else {
-      print("ytyt");
+      print("бббббббббббббббббббббббббббббббббббббббббб");
     }
+  }
+
+  Widget aaa() {
+    return FloatingActionButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      child: Icon(
+        Icons.arrow_forward,
+      ),
+    );
   }
 
   @override
@@ -55,11 +68,11 @@ class _SignInState extends State<SignIn> {
             state.whenOrNull(
               loadingAuthorization: () {},
               contentAuthorization: (summaryAuthorization) {
-Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Home();
-      }));
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Home();
+                }));
                 Fluttertoast.showToast(
-                    msg: summaryAuthorization.message??"",
+                    msg: summaryAuthorization.message ?? "",
                     toastLength: Toast.LENGTH_SHORT,
                     gravity: ToastGravity.CENTER,
                     timeInSecForIosWeb: 1,
@@ -70,8 +83,11 @@ Navigator.push(context, MaterialPageRoute(builder: (context) {
                 //     .add(AuthorizationEvent.fetchSummaryAuthorization(_username.text, _password.text));
               },
               errorAuthorization: (err) {
+                print(err is DioError);
+                print("aaaa ${err.runtimeType}");
+                print("bbb ${err.toString()}");
                 Fluttertoast.showToast(
-                    msg:"Введите верный логин или пароль",
+                    msg: "Не верный логин или пароль", //err.message ?? "",
                     toastLength: Toast.LENGTH_SHORT,
                     gravity: ToastGravity.TOP,
                     timeInSecForIosWeb: 1,
@@ -97,6 +113,20 @@ Navigator.push(context, MaterialPageRoute(builder: (context) {
                         color: !isKeyboar ? tru : sss,
                       ),
                       if (!isKeyboar) Img(),
+                      //                 if (isKeyboar)Center(
+                      //                 child: Container(
+                      //                   width:20,
+                      //                   height: 20,
+                      //                   child: FloatingActionButton(
+                      //   onPressed: () {
+                      //     Navigator.of(context).pop();
+                      //   },
+                      //   child: Icon(
+                      //     Icons.arrow_forward,
+                      //   ),
+                      // ),
+                      //                 ),
+                      //               ),
                       Container(
                         margin: !isKeyboar
                             ? EdgeInsets.only(top: 280, left: 20, right: 20)
@@ -127,13 +157,14 @@ Navigator.push(context, MaterialPageRoute(builder: (context) {
                                         ),
                                         TextFormField(
                                           controller: _username,
-                                          style: TextStyle(fontSize: 18),
+                                          style: TextStyle(fontSize: 20),
                                           decoration: InputDecoration(
+                                            prefixIcon: Icon(LineIcons.user),
                                             labelText: "Логин",
                                             labelStyle: TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.black87),
-                                            hintText: "Введите..",
+                                            hintText: "Введите логин..",
                                             hintStyle: TextStyle(
                                                 fontSize: 16,
                                                 color: Colors.black45),
@@ -156,13 +187,28 @@ Navigator.push(context, MaterialPageRoute(builder: (context) {
                                         ),
                                         TextFormField(
                                           controller: _password,
-                                          style: TextStyle(fontSize: 18),
+                                          style: TextStyle(fontSize: 20),
+                                          obscureText: _passwordVisible,
                                           decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                              icon: Icon(
+                                                _passwordVisible
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _passwordVisible =
+                                                      !_passwordVisible;
+                                                });
+                                              },
+                                            ),
+                                            prefixIcon: Icon(Icons.lock),
                                             labelText: "Пароль",
                                             labelStyle: TextStyle(
                                                 fontSize: 18,
                                                 color: Colors.black87),
-                                            hintText: "Введите..",
+                                            hintText: "Введите пароль..",
                                             hintStyle: TextStyle(
                                                 fontSize: 16,
                                                 color: Colors.black45),
@@ -171,7 +217,7 @@ Navigator.push(context, MaterialPageRoute(builder: (context) {
                                                   BorderRadius.circular(30),
                                             ),
                                           ),
-                                          obscureText: false,
+                                          // obscureText: true,
                                           validator: (value) {
                                             if (value == null ||
                                                 value.isEmpty) {
@@ -189,37 +235,79 @@ Navigator.push(context, MaterialPageRoute(builder: (context) {
                             SizedBox(
                               height: 5,
                             ),
-                            TextButton(
-                              style: TextButton.styleFrom(primary: Colors.blue),
-                              child: Text(
-                                "Забыли пароль?",
-                                style: TextStyle(fontSize: 17),
+                            if (!isKeyboar)
+                              TextButton(
+                                style:
+                                    TextButton.styleFrom(primary: Colors.blue),
+                                child: Text(
+                                  "Забыли пароль?",
+                                  style: TextStyle(fontSize: 17),
+                                ),
+                                onPressed: () {
+                                  showDialogPasswordRecovery(context);
+                                },
                               ),
-                              onPressed: () {
-                                showDialogPasswordRecovery(context);
-                              },
-                            ),
                             SizedBox(
                               height: 10,
                             ),
-                            Center(
-                              child: Container(
-                                height: 64,
-                                width: 252,
-                                child: ElevatedButton(
-                                  onPressed: auth,
-                                  child: Text(
-                                    "Войти",
-                                    style: TextStyle(fontSize: 18),
+                            if (!isKeyboar)
+                              Center(
+                                child: Container(
+                                  height: 64,
+                                  width: 252,
+                                  child: ElevatedButton(
+                                    child: isLoading
+                                        ? CircularProgressIndicator(
+                                            color: Colors.white,
+                                          )
+                                        : Text(
+                                            "Войти",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                    onPressed: () async {
+                                      auth();
+                                      setState(() => isLoading = true);
+                                      await Future.delayed(
+                                          Duration(seconds: 3));
+                                      setState(() => isLoading = false);
+                                    },
+                                    // {
+                                    //   setState(() => isLoading = true);
+                                    //   if (isLoading) return auth();
+                                    //   print("aaa\n\n\n");
+                                    // },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: kGreen,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        )),
                                   ),
-                                  style: ElevatedButton.styleFrom(
-                                      primary: kGreen,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(30),
-                                      )),
                                 ),
                               ),
-                            ),
+                            if (isKeyboar)
+                              Container(
+                                padding: EdgeInsets.only(left: 5),
+                                width: 65,
+                                height: 65,
+                                child: FloatingActionButton(
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: Colors.green,
+                                  onPressed: () async {
+                                    auth();
+                                    setState(() => isLoading = true);
+                                    await Future.delayed(Duration(seconds: 3));
+                                    setState(() => isLoading = false);
+                                  },
+                                  child: isLoading
+                                      ? CircularProgressIndicator(
+                                          color: Colors.white,
+                                        )
+                                      : Icon(
+                                          Icons.arrow_forward,
+                                        ),
+                                ),
+                              ),
                           ],
                         ),
                       ),

@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:dostavka/core/const/url.dart';
-import 'package:dostavka/moduls/authorization/logic/services/login_service.dart';
 import 'package:dostavka/moduls/authorization/logic/provider/authorization_provider.dart';
 import 'package:hive/hive.dart';
 
-class HttpService extends LoginService {
+class HttpService {
   late Dio _dio;
 
   Dio get dio => _dio;
@@ -30,7 +29,12 @@ class HttpService extends LoginService {
   initializeInterceptors() {
     dio.interceptors.add(QueuedInterceptorsWrapper(
       onError: (error, errorInterceptorHandler) {
-        errorInterceptorHandler.next(error);
+        print(error);
+        errorInterceptorHandler.reject(
+            DioError(error: error.error, requestOptions: error.requestOptions));
+        if (error.response?.statusCode == 403 ||
+            error.response?.statusCode == 401) {}
+        return;
       },
       onRequest: (request, requestInterceptorHandler) async {
         keyBox = Hive.isBoxOpen('HiveToken')
@@ -43,6 +47,7 @@ class HttpService extends LoginService {
       },
       onResponse: (response, responseInterceptorHandler) {
         responseInterceptorHandler.next(response);
+        
       },
     ));
   }

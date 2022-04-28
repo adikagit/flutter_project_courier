@@ -9,7 +9,7 @@ class CommunityTextColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TextColumn(
       title: 'Здравствуйте',
-      text: 'Вас приветствуют Halyk Bank.',
+      text: 'Вас приветствует Halyk Bank.',
     );
   }
 }

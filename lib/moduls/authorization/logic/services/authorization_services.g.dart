@@ -10,7 +10,7 @@ part of 'authorization_services.dart';
 
 class _AuthorizationList implements AuthorizationList {
   _AuthorizationList(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://192.168.8.101:8888/';
+    baseUrl ??= 'http://192.168.8.100:8888/';
   }
 
   final Dio _dio;

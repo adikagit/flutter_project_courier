@@ -17,6 +17,7 @@ class BlankScreen extends StatelessWidget {
           Icons.arrow_forward,
         ),
       ),
+      
     );
   }
 }

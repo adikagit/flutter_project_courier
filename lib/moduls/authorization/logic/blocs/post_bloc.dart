@@ -1,10 +1,5 @@
 import 'package:dostavka/moduls/authorization/logic/provider/authorization_provider.dart';
 import 'package:dostavka/moduls/authorization/logic/zmodels/authorization_response.dart';
-import 'package:dostavka/moduls/orders/logic/provider/provider.dart';
-import 'package:dostavka/moduls/orders/logic/zmodels/complete_response.dart';
-import 'package:dostavka/moduls/orders/logic/zmodels/detail_response.dart';
-import 'package:dostavka/moduls/orders/logic/zmodels/list_response.dart';
-import 'package:dostavka/moduls/orders/logic/zmodels/newOrders_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,10 +16,10 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
   @override
   Stream<AuthorizationState> mapEventToState(AuthorizationEvent event) async* {
     yield* event.when(
-       fetchSummaryAuthorization: (username,password) async* {
+      fetchSummaryAuthorization: (username, password) async* {
         try {
           yield AuthorizationState.loadingAuthorization();
-          var summary = await provider.getAuthorization(username,password);
+          var summary = await provider.getAuthorization(username, password);
           yield AuthorizationState.contentAuthorization(summary);
         } catch (err) {
           yield AuthorizationState.errorAuthorization(err);

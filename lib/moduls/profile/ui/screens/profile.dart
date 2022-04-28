@@ -1,12 +1,12 @@
 import 'package:dostavka/constants.dart';
+import 'package:dostavka/moduls/authorization/ui/screens/SignIn.dart';
 import 'package:dostavka/moduls/profile/logic/blocs/profile_bloc.dart';
-import 'package:dostavka/moduls/profile/ui/widgets/editPassword.dart';
 import 'package:dostavka/moduls/profile/ui/widgets/editPersonAccount.dart';
+import 'package:dostavka/moduls/profile/ui/widgets/showDialogExit.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
-import '../../logic/provider/profile_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -96,7 +96,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           fontWeight: FontWeight.w400),
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 15,
+                                    ),
+                                    Divider(
+                                        height: 10,
+                                        thickness: 2,
+                                        color: Colors.grey[150]),
+                                    SizedBox(
+                                      height: 3,
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -129,21 +136,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(100),
-                                                color: Colors.grey),
+                                                color: Colors.grey[300]),
                                           ),
                                         ),
                                         Column(
                                           children: [
                                             Text(
-                                              'Обновление',
+                                              'Новые',
                                               style: TextStyle(
                                                 color: Colors.grey[900],
                                                 fontSize: 16,
                                               ),
                                             ),
                                             Text(
-                                              '15.02.2022',
-                                              style: TextStyle(
+                                              '${profileSummary.countCompleteDelivery ?? ''}',
+                                              style: const TextStyle(
                                                 color: Colors.green,
                                                 fontSize: 16,
                                               ),
@@ -301,12 +308,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: Container(
                                     height: 60,
                                     child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(
+                                      onPressed: () async {
+                                        await Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) {
                                           return EditPersonAccount();
                                         }));
+                                        BlocProvider.of<ProfileBloc>(context)
+                                            .add(ProfileEvent
+                                                .fetchSummaryProfile());
                                       },
                                       child: Row(
                                         mainAxisAlignment:
@@ -354,8 +364,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: Container(
                                     height: 60,
                                     child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
+                                      onPressed: () async {
+                                        var res = await showExit(context);
+                                        if (res == true) {
+                                          Navigator.of(context).pop();
+                                        }
                                       },
                                       child: Row(
                                         mainAxisAlignment:

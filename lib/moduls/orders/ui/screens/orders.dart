@@ -3,11 +3,14 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dostavka/constants.dart';
 import 'package:dostavka/moduls/orders/logic/blocs/post_bloc.dart';
-import 'package:dostavka/moduls/orders/ui/widgets/showDialogAccept.dart';
+import 'package:dostavka/moduls/orders/logic/provider/provider.dart';
+import 'package:dostavka/moduls/orders/ui/widgets/modalBottomSheetAccept.dart';
+// import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -89,10 +92,32 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   },
                   content: (summary) {
                     if (summary.isEmpty) {
-                      return Center(child: Text("Нет заказов",style: TextStyle(fontSize: 20),));
+                      return Center(
+                        child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 300,
+                                  width: 300,
+                                  margin: EdgeInsets.only(top: 75),
+                                  child: Image.asset("assets/images/zhdun.png"),
+                                ),
+                                // SizedBox(height: 10,),
+                                Text(
+                                  "Нет заказов",
+                                  style:
+                                      TextStyle(fontSize: 20, color: Colors.black54),
+                                ),
+                              ],
+                            ),
+                          
+                        ),
+                      );
                     } else {
                       return ListView.builder(
                         itemBuilder: (context, index) {
+                          // String formattedDate = DateFormat('yyyy-MM-dd').format(summary[index].created ?? 0);
                           return GestureDetector(
                             onTap: () {
                               setState(() {});
@@ -109,28 +134,52 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                   ),
                                   child: ListTile(
                                     title: Text(
-                                      summary[index].addressPickup ?? '',
+                                      "Заказ № ${summary[index].id ?? 0}",
                                       style: TextStyle(
                                           fontSize: 21, color: Colors.black87),
                                     ),
-                                    subtitle: Text(
-                                      summary[index].addressDelivery ?? '',
-                                      style: TextStyle(
-                                          fontSize: 17, color: Colors.black54),
-                                    ),
-                                    // trailing: Text(
-                                    //   summary[index].status ?? '',
+                                    // subtitle: Text(
+                                    //   summary[index].addressDelivery ?? '',
                                     //   style: TextStyle(
-                                    //       fontSize: 16, color: Colors.black54),
+                                    //       fontSize: 17, color: Colors.black54),
                                     // ),
+                                    trailing: Text(
+                                      "${DateFormat.yMMMEd().format(summary[index].created!)}",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black54),
+                                    ),
                                     onTap: () async {
-                                      var res = await showZ(context);
+                                      var res = await showModalBottomSheet(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.vertical(
+                                                top: Radius.circular(20))),
+                                        isDismissible: true,
+                                        isScrollControlled: true,
+                                        enableDrag: true,
+                                        context: context,
+                                        builder: (context) =>
+                                            BlocProvider<OrderBloc>(
+                                                create: (context) =>
+                                                    OrderBloc(OrderProvider()),
+                                                child: BuildSheetWidgetAccept(
+                                                    id: summary[index].id ??
+                                                        0)),
+                                      );
+                                      
                                       if (res == true) {
                                         BlocProvider.of<OrderBloc>(context).add(
                                             OrderEvent.fetchSummaryAccept(
                                                 summary[index].id ?? 0));
                                       }
                                     },
+                                    // onTap: () async {
+                                    //   var res = await showZ(context);
+                                    //   if (res == true) {
+                                    //     BlocProvider.of<OrderBloc>(context).add(
+                                    //         OrderEvent.fetchSummaryAccept(
+                                    //             summary[index].id ?? 0));
+                                    //   }
+                                    // },
                                     tileColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),

@@ -1,6 +1,11 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:dostavka/moduls/orders/logic/provider/provider.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/complete_response.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/detail_response.dart';
+import 'package:dostavka/moduls/orders/logic/zmodels/image_payload.dart';
+import 'package:dostavka/moduls/orders/logic/zmodels/image_response.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/list_response.dart';
 import 'package:dostavka/moduls/orders/logic/zmodels/newOrders_response.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,6 +66,15 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
           yield OrderState.contentQrcode(summaryQrcode);
         } catch (err) {
           yield OrderState.error(err);
+        }
+      },
+      fetchSummaryImage: (imagePayload) async* {
+        try {
+          yield OrderState.loadingImage();
+          var summaryImage = await provider.getImage(imagePayload);
+          yield OrderState.contentImage(summaryImage);
+        } catch (err) {
+          yield OrderState.errorImage(err);
         }
       },
       fetchSummaryComplete: (id, status) async* {

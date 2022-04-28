@@ -1,17 +1,11 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:dostavka/constants.dart';
-import 'package:dostavka/core/network/httpService.dart';
 import 'package:dostavka/moduls/orders/logic/blocs/post_bloc.dart';
 import 'package:dostavka/moduls/orders/logic/provider/provider.dart';
-import 'package:dostavka/moduls/orders/logic/zmodels/list_response.dart';
-import 'package:dostavka/moduls/orders/ui/widgets/podrobno.dart';
-import 'package:dostavka/moduls/profile/logic/blocs/profile_bloc.dart';
+import 'package:dostavka/moduls/orders/ui/widgets/detail.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 class HistoryActiveScreen extends StatefulWidget {
   const HistoryActiveScreen({Key? key}) : super(key: key);
@@ -77,7 +71,29 @@ class _HistoryActiveScreenState extends State<HistoryActiveScreen> {
                 },
                 content: (summary) {
                   if (summary.isEmpty) {
-                      return Center(child: Text("Нет заказов",style: TextStyle(fontSize: 20),));
+                      return Center(
+                        child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 300,
+                                  width: 300,
+                                  margin: EdgeInsets.only(top: 75),
+                                  child: Image.asset("assets/images/zhdun.png"),
+                                ),
+                                // SizedBox(height: 10,),
+                                Text(
+                                  "Нет заказов",
+                                  style:
+                                      TextStyle(fontSize: 20, color: Colors.black54),
+                                ),
+                              ],
+                            ),
+                          
+                        ),
+                      );
+                    
                   } else {
                     return ListView.builder(
                       itemBuilder: (context, index) {
@@ -96,29 +112,28 @@ class _HistoryActiveScreenState extends State<HistoryActiveScreen> {
                                   right: 3,
                                 ),
                                 child: ListTile(
-                                  title: Text(
-                                    summary[index].addressPickup ?? '',
-                                    style: TextStyle(
-                                        fontSize: 21, color: Colors.black87),
-                                  ),
-                                  subtitle: Text(
-                                    summary[index].addressDelivery ?? '',
-                                    style: TextStyle(
-                                        fontSize: 17, color: Colors.black54),
-                                  ),
+                                  title: Text("Заказ № ${
+                                      summary[index].id ?? 0}",
+                                      style: TextStyle(
+                                          fontSize: 21, color: Colors.black87),
+                                    ),
+                                  // subtitle: Text(
+                                  //   summary[index].addressDelivery ?? '',
+                                  //   style: TextStyle(
+                                  //       fontSize: 17, color: Colors.black54),
+                                  // ),
                                   trailing: Text(
-                                    summary[index].status ?? '',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.black54),
-                                  ),
+                                      "${DateFormat.yMMMEd().format(summary[index].created!)}",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.black54),
+                                    ),
                                   onTap: () async {
                                     var res = await Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
                                       return BlocProvider<OrderBloc>(
                                         create: (context) =>
                                             OrderBloc(OrderProvider()),
-                                        child: Pod(
+                                        child: Datail(
                                           id: summary[index].id ?? 0,
                                         ),
                                       );

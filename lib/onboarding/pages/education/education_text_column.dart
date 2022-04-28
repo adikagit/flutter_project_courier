@@ -10,7 +10,7 @@ class EducationTextColumn extends StatelessWidget {
     return const TextColumn(
       title: 'Halyk Bank',
       text:
-          'В этом приложении Вы можете с легкостью заказать банковскую карточку.',
+          'Доставляй банковские карточки с удовольствием.',
     );
   }
 }

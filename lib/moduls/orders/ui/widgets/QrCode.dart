@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:dostavka/moduls/orders/logic/blocs/post_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QrCodeWidget extends StatefulWidget {
@@ -36,8 +34,7 @@ class _QrCodeWidgetState extends State<QrCodeWidget> {
     controller!.resumeCamera();
   }
 
-  List list =
-      "Из данного текста получим список слов".split(RegExp("([а-яА-Я]+)"));
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -76,7 +73,7 @@ class _QrCodeWidgetState extends State<QrCodeWidget> {
   void onQRViewCreated(QRViewController controller) {
     setState(() => this.controller = controller);
     // Navigator.of(context).pop(barcode);
-    print(barcode);
+    print(barcode!.code);
     controller.scannedDataStream
         .listen((barcode) => setState(() => this.barcode = barcode)
             // Navigator.of(context).pop(barcode.code);

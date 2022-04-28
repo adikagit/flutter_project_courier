@@ -10,7 +10,7 @@ part of 'services.dart';
 
 class _OrdersList implements OrdersList {
   _OrdersList(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://192.168.8.101:8888/';
+    baseUrl ??= 'http://192.168.8.100:8888/';
   }
 
   final Dio _dio;
@@ -77,7 +77,7 @@ class _OrdersList implements OrdersList {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<DetailResponce>(
             Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/api/courier/orders/detail',
+                .compose(_dio.options, '/api/all/orders/detail',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DetailResponce.fromJson(_result.data!);
@@ -115,6 +115,34 @@ class _OrdersList implements OrdersList {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = CompleteResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<dynamic> getImage({client_id, photo}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (client_id != null) {
+      _data.fields.add(MapEntry('client_id', client_id.toString()));
+    }
+    if (photo != null) {
+      _data.files.add(MapEntry(
+          'photo',
+          MultipartFile.fromFileSync(photo.path,
+              filename: photo.path.split(Platform.pathSeparator).last)));
+    }
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data')
+        .compose(_dio.options, '/api/courier/orders/identification',
+            queryParameters: queryParameters, data: _data)
+        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = _result.data;
     return value;
   }
 
